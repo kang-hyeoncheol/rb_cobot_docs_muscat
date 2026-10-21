@@ -1,0 +1,149 @@
+{
+  "id": "settings-collision-detection-external",
+  "doc": "/manual/settings/collision-detection",
+  "title": "외부 충돌 설정하기",
+  "route": "/muscat/app/settings/manipulate/general/collision-detection",
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "설정 > 일반 > 충돌 감지 화면의 외부 충돌 카드를 설정해 봅니다. 외부 충돌 감지를 켜고, 멈추는 방식과 둔감도를 정한 뒤 저장합니다. 이 화면은 실제 로봇에 연결되어 있지 않으며, 저장한 값은 이 실습 안에서만 유지됩니다."
+    },
+    {
+      "id": "out-intro",
+      "title": "외부 충돌 카드",
+      "text": "위쪽 외부 충돌 카드에서 외부 충돌 감지를 켜고, 멈추는 방식과 둔감도를 정합니다. 지금은 꺼져 있습니다. 다음을 누르세요.",
+      "docText": "위쪽 외부 충돌 카드에서 외부 충돌 감지를 켜고, 멈추는 방식(정지 모드)과 둔감도를 정합니다. 처음에는 꺼져 있습니다.",
+      "target": {
+        "css": ".OutCollision"
+      }
+    },
+    {
+      "id": "out-toggle",
+      "title": "외부 충돌 켜기",
+      "text": "켜기/끄기 스위치를 눌러 켜세요.",
+      "docText": "켜기/끄기 스위치를 누르면 외부 충돌 감지가 켜집니다. 저장하기 전까지는 고르기만 한 상태입니다.",
+      "target": {
+        "css": ".OutCollision [role=switch]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "also": [
+        {
+          "css": ".OutCollision"
+        }
+      ]
+    },
+    {
+      "id": "out-mode-open",
+      "title": "정지 모드 목록 열기",
+      "text": "정지 모드 선택 상자를 눌러 고를 수 있는 방식을 확인하세요.",
+      "docText": "정지 모드 선택 상자를 누르면 동작 일시 정지와 회피 정지 목록이 열립니다.",
+      "target": {
+        "css": ".OutCollision [data-slot=select-box]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "also": [
+        {
+          "css": ".OutCollision"
+        }
+      ]
+    },
+    {
+      "id": "out-mode-pick",
+      "title": "회피 정지 고르기",
+      "text": "회피 정지를 누르세요.",
+      "docText": "목록에서 회피 정지를 누릅니다.",
+      "target": {
+        "css": "[data-slot=select-option-text]",
+        "text": "회피 정지"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "ensure": {
+        "when": {
+          "css": "[data-slot=select-option-text]",
+          "text": "회피 정지"
+        },
+        "press": [
+          {
+            "css": ".OutCollision [data-slot=select-box]"
+          }
+        ]
+      },
+      "also": [
+        {
+          "css": ".OutCollision"
+        }
+      ]
+    },
+    {
+      "id": "out-slider",
+      "title": "둔감도 조절",
+      "text": "둔감도 슬라이더를 눌러 값을 바꿔 보세요. 오른쪽 퍼센트가 함께 바뀝니다. 확인했으면 다음을 누르세요.",
+      "docText": "둔감도 슬라이더를 끌거나 눌러 0~100% 사이로 조절합니다. 오른쪽에 현재 값이 퍼센트로 표시됩니다. 값이 클수록 더 큰 힘이 가해져야 충돌로 판단합니다.",
+      "target": {
+        "css": ".OutCollision [data-slot=slider]"
+      },
+      "hint": "슬라이더를 눌러 값을 바꿔 보세요",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "also": [
+        {
+          "css": ".OutCollision"
+        }
+      ]
+    },
+    {
+      "id": "out-save",
+      "title": "외부 충돌 저장",
+      "text": "외부 충돌 카드의 저장을 누르세요. 누르기 전에는 고른 값이 적용되지 않습니다.",
+      "docText": "외부 충돌 카드의 저장을 누릅니다. 저장하기 전에는 고른 값이 적용되지 않으며, 초기화를 누르면 저장된 값으로 되돌아갑니다.",
+      "target": {
+        "css": ".OutCollision button[data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "also": [
+        {
+          "css": ".OutCollision"
+        }
+      ]
+    },
+    {
+      "id": "out-result",
+      "title": "저장된 값 확인",
+      "text": "저장한 값이 그대로 남아 있고, 저장된 값과 같아졌으므로 초기화 버튼이 눌리지 않는 상태가 되었습니다. 다음을 누르세요.",
+      "docText": "저장한 값이 그대로 표시되고, 화면의 값이 저장된 값과 같아지므로 초기화 버튼이 눌리지 않는 상태가 됩니다.",
+      "target": {
+        "css": ".OutCollision"
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "외부 충돌을 켜고 정지 모드와 둔감도를 정해 저장했습니다. 다시 해 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

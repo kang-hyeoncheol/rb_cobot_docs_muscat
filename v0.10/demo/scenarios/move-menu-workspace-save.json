@@ -1,0 +1,188 @@
+{
+  "id": "move-menu-workspace-save",
+  "doc": "/manual/move-menu/workspace",
+  "title": "저장하고 다시 불러오기",
+  "route": "/muscat/app/move",
+  "initialState": {
+    "workspace": "examples"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "열려 있는 워크스페이스(Welding cell)의 도형을 바꾼 뒤 저장하고, 닫았다가 다시 불러와 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요."
+    },
+    {
+      "id": "open",
+      "title": "워크스페이스 열기",
+      "text": "오른쪽 메뉴의 워크스페이스를 누르세요.",
+      "docText": "동작 화면의 오른쪽 메뉴에서 워크스페이스를 열면 편집 패널이 표시됩니다.",
+      "target": {
+        "css": "[data-testid=menu-item-workspace]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "move-object",
+      "title": "도형 위치 바꾸기",
+      "text": "저장할 변경을 만듭니다. 위치의 X 입력칸을 누르고 500을 입력한 뒤 Set을 누르세요.",
+      "docText": "위치 X에 500mm를 입력하고 Set으로 적용합니다. 도형의 X 위치가 변경되고 3D 화면에 반영됩니다.",
+      "target": {
+        "css": ".WorkspaceControl .AxisNumberInput",
+        "nth": 0
+      },
+      "free": true,
+      "open": [
+        {
+          "css": ".ManiRobotUrdfViewer canvas"
+        }
+      ],
+      "ensure": [
+        {
+          "when": {
+            "css": ".WorkspaceControl .AxisNumberInput"
+          },
+          "press": [
+            {
+              "css": ".WorkspaceControl [data-item-id]",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "hint": "이번 단계에서는 X 위치만 바꿔 보세요.",
+      "perform": [
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl .AxisNumberInput input",
+            "nth": 0
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "Del"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "5"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "0"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "0"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "Set"
+          }
+        }
+      ]
+    },
+    {
+      "id": "save-intro",
+      "title": "저장과 다시 불러오기",
+      "text": "편집 내용은 자동저장되며 저장 버튼으로 바로 저장할 수도 있습니다. 저장이 끝나면 버튼이 비활성화될 수 있습니다. 다음 단계에서 닫았다가 다시 열어 봅니다.",
+      "docText": "편집 내용은 자동저장되며 저장 버튼으로 즉시 저장할 수도 있습니다. 저장된 구성은 닫은 뒤 불러오기로 다시 엽니다.",
+      "target": {
+        "css": ".WorkspaceControl"
+      },
+      "ensure": []
+    },
+    {
+      "id": "save-workspace",
+      "title": "직접 해 보기 · 저장 확인",
+      "text": "먼저 저장이 끝났는지 확인하세요. 그다음 닫기 → 불러오기를 누르고 Welding cell를 선택한 뒤 확인을 눌러, 바꾼 위치가 유지되는지 확인하세요.",
+      "docText": "저장을 완료하고 닫기 → 불러오기를 선택합니다. 저장한 워크스페이스를 선택해 확인을 누르면 도형과 편집한 속성이 다시 표시됩니다.",
+      "target": {
+        "css": "[role=dialog] span",
+        "text": "Welding cell",
+        "up": 3,
+        "fallback": {
+          "css": ".WorkspaceControl button",
+          "text": "닫기",
+          "fallback": {
+            "css": ".WorkspaceControl button",
+            "text": "불러오기"
+          }
+        }
+      },
+      "free": true,
+      "open": [
+        {
+          "css": ".WorkspaceControl button",
+          "text": "저장"
+        },
+        {
+          "css": "[role=dialog] button",
+          "text": "확인"
+        }
+      ],
+      "hint": "저장한 구성을 다시 열어 확인하세요.",
+      "perform": [
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl button",
+            "text": "저장"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl button",
+            "text": "닫기"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl button",
+            "text": "불러오기"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[role=dialog] span",
+            "text": "Welding cell"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[role=dialog] button",
+            "text": "확인"
+          }
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "저장한 워크스페이스를 다시 불러와 변경이 유지되는지 확인했습니다. 다시 하기는 실습을 처음 상태로 초기화합니다."
+    }
+  ]
+}

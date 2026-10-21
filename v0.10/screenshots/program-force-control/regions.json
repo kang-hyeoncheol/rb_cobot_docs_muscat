@@ -1,0 +1,91 @@
+{
+ "pick-empty": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    517,
+    67,
+    103,
+    273
+   ]
+  ]
+ },
+ "open-add": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    394,
+    93,
+    226,
+    247
+   ]
+  ]
+ },
+ "pick-cmd": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "tree-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-form": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "form-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "mode-open": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "mode-pick": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "target-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "enable-z": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-target": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "target-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "other-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-force": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

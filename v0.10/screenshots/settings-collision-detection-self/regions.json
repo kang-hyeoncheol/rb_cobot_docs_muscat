@@ -1,0 +1,32 @@
+{
+ "self-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "self-dist": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "self-mode-open": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "self-mode-pick": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "self-save": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "self-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "pick-empty": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    517,
+    47,
+    103,
+    293
+   ]
+  ]
+ },
+ "open-add": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    394,
+    93,
+    226,
+    247
+   ]
+  ]
+ },
+ "pick-cmd": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "tree-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-form": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "form-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "add-point": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "point-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-target": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-blend": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "blend-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-point": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

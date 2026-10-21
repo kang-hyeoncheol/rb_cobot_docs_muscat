@@ -1,0 +1,155 @@
+{
+  "id": "jog-robot-joint",
+  "doc": "/manual/jog-robot",
+  "title": {
+    "ko": "관절 조그로 움직이기",
+    "en": "Move joints with jog"
+  },
+  "route": "/muscat/app/dashboard",
+  "steps": [
+    {
+      "id": "intro",
+      "title": {
+        "ko": "실습을 시작합니다",
+        "en": "Start the practice"
+      },
+      "text": {
+        "ko": "가상 로봇(C500920, SB5-920E)의 관절을 조그(Jog)로 하나씩 돌려 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요.",
+        "en": "Turn the joints of the virtual robot (C500920, SB5-920E) one at a time with jog. The robot on this screen does not actually move. Follow the prompts and click the highlighted areas."
+      }
+    },
+    {
+      "id": "connection",
+      "title": {
+        "ko": "연결 상태 확인",
+        "en": "Check the connection status"
+      },
+      "text": {
+        "ko": "상단의 초록색 CONNECTED 표시는 UI가 로봇과 연결되어 있다는 뜻입니다. 연결된 상태에서만 로봇을 조작할 수 있습니다.",
+        "en": "The green CONNECTED indicator at the top means the UI is connected to the robot. You can operate the robot only while connected."
+      },
+      "target": {
+        "css": "button",
+        "text": "CONNECTED"
+      }
+    },
+    {
+      "id": "open-move",
+      "title": {
+        "ko": "동작 메뉴 열기",
+        "en": "Open the Move menu"
+      },
+      "text": {
+        "ko": "왼쪽 메뉴에서 동작을 눌러 로봇을 움직이는 화면으로 이동합니다.",
+        "en": "Click Move in the left menu to go to the screen where you move the robot."
+      },
+      "target": {
+        "css": "a[href=\"/muscat/app/move\"]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "current-pose",
+      "title": {
+        "ko": "현재 자세 확인",
+        "en": "Check the current pose"
+      },
+      "text": {
+        "ko": "왼쪽 위에서 로봇의 현재 위치를 볼 수 있습니다. X·Y·Z는 TCP(툴 끝점)의 위치(mm), RX·RY·RZ는 자세(°), AA는 팔꿈치 자세(arm angle)이고, J0~J6은 각 관절의 각도입니다.",
+        "en": "The upper left shows the robot's current position. X, Y and Z are the TCP (tool center point) position in mm, RX, RY and RZ are its orientation in degrees, AA is the elbow posture (arm angle), and J0 to J6 are the joint angles."
+      },
+      "target": {
+        "css": "strong",
+        "text": "J0",
+        "up": 3
+      }
+    },
+    {
+      "id": "jog-modes",
+      "title": {
+        "ko": "조그 방식 선택",
+        "en": "Choose a jog mode"
+      },
+      "text": {
+        "ko": "오른쪽 위 탭에서 조그 방식을 고릅니다. Global·Local·User는 좌표계를 기준으로 TCP를 직선·회전 이동시키고, Joint는 관절 하나씩 돌립니다.",
+        "en": "Choose the jog mode with the tabs at the upper right. Global, Local and User move the TCP in a straight line or rotate it relative to a coordinate frame, and Joint turns one joint at a time."
+      },
+      "target": {
+        "css": "[data-slot=tabs-list]"
+      }
+    },
+    {
+      "id": "select-joint",
+      "title": {
+        "ko": "Joint 탭 선택",
+        "en": "Select the Joint tab"
+      },
+      "text": {
+        "ko": "먼저 관절을 직접 돌려 봅니다. Joint 탭을 누르세요.",
+        "en": "First, turn the joints directly. Click the Joint tab."
+      },
+      "target": {
+        "css": "[data-slot=tabs-trigger]",
+        "text": "Joint"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "jog-j0",
+      "title": {
+        "ko": "관절 돌려 보기",
+        "en": "Turn a joint"
+      },
+      "text": {
+        "ko": "J0~J6 각 관절의 + / − 버튼을 눌러 보세요. 누르고 있는 동안만 움직이고, 손을 떼면 멈춥니다. 누를 때마다 3D 로봇이 회전하고 관절 값이 함께 바뀌는 것을 확인하세요. 3D 모델과 숫자는 항상 같은 로봇 상태를 보여줍니다. 충분히 해 본 뒤 다음을 누르세요. (누른 직후 아주 짧은 지연이 있을 수 있습니다.)",
+        "en": "Try the + / − buttons of each joint from J0 to J6. The joint moves only while you hold the button and stops when you release it. Each time you press, the 3D robot rotates and the joint value changes with it. The 3D model and the numbers always show the same robot state. Press Next when you have tried enough. (There may be a very short delay right after you press.)"
+      },
+      "docText": {
+        "ko": "J0~J6 각 관절의 + / − 버튼을 눌러 보세요. 누르고 있는 동안만 움직이고, 손을 떼면 멈춥니다. 누를 때마다 3D 로봇이 회전하고 관절 값이 함께 바뀌는 것을 확인하세요. 3D 모델과 숫자는 항상 같은 로봇 상태를 보여줍니다. (누른 직후 아주 짧은 지연이 있을 수 있습니다.)",
+        "en": "Try the + / − buttons of each joint from J0 to J6. The joint moves only while you hold the button and stops when you release it. Each time you press, the 3D robot rotates and the joint value changes with it. The 3D model and the numbers always show the same robot state. (There may be a very short delay right after you press.)"
+      },
+      "target": {
+        "css": "[data-slot=tabs-content]"
+      },
+      "open": [
+        {
+          "css": ".ManiRobotUrdfViewer canvas"
+        }
+      ],
+      "hint": {
+        "ko": "관절을 움직여 보세요. 3D 화면은 드래그로 회전하고 휠로 확대·축소할 수 있습니다.",
+        "en": "Try several joints. Drag the 3D view to rotate the camera and scroll to zoom."
+      },
+      "perform": [
+        {
+          "hold": 1000,
+          "target": {
+            "css": "[data-slot=side-number-input-increase]",
+            "nth": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": {
+        "ko": "실습 완료",
+        "en": "Practice complete"
+      },
+      "text": {
+        "ko": "Joint 탭에서 관절을 하나씩 돌려 봤습니다. 처음부터 다시 해 보려면 다시 하기를 누르세요.",
+        "en": "You turned the joints one at a time on the Joint tab. Press Restart to try again from the beginning."
+      }
+    }
+  ]
+}

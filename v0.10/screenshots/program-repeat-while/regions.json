@@ -1,0 +1,61 @@
+{
+ "tree": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": [
+   [
+    517,
+    93,
+    1082,
+    360
+   ]
+  ]
+ },
+ "open-edit": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": [
+   [
+    517,
+    93,
+    1082,
+    360
+   ]
+  ]
+ },
+ "select-item": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-form": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "modes": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "pick-while": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-cond": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-repeat": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "tree-saved": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

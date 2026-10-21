@@ -1,0 +1,100 @@
+{
+  "id": "settings-after-action",
+  "doc": "/manual/settings/after-action",
+  "title": "After Action 설정하기",
+  "route": "/muscat/app/settings/manipulate/general/after-action",
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "설정 화면의 After Action에서 서보를 켠 뒤 사용자 스크립트가 실행되도록 설정해 봅니다. 이 화면은 실제 로봇에 연결되어 있지 않으며, 설정한 값은 이 실습 안에서만 유지됩니다."
+    },
+    {
+      "id": "pick-card",
+      "title": "시점 고르기",
+      "text": "After Servo On 카드를 누르세요. 서보를 켠 뒤에 할 동작을 정하는 카드입니다.",
+      "docText": "카드 목록에서 After Servo On 카드를 누릅니다. 카드가 선택되고 오른쪽 설정 영역의 제목이 After Servo On으로 바뀝니다.",
+      "target": {
+        "css": ".AfterActionCard",
+        "nth": 1
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "panel",
+      "title": "설정 영역",
+      "text": "오른쪽 설정 영역에 선택한 시점 이름과 현재 동작이 보입니다. 지금은 Do nothing이라 아무것도 실행하지 않습니다. 다음을 누르세요.",
+      "docText": "오른쪽 설정 영역에는 선택한 시점의 이름과 현재 동작이 표시됩니다. 처음에는 Do nothing이라 아무 동작도 하지 않습니다.",
+      "target": {
+        "css": ".AfterActionSettingBox"
+      }
+    },
+    {
+      "id": "open-select",
+      "title": "동작 목록 열기",
+      "text": "After Action 목록을 눌러 고를 수 있는 동작을 확인하세요.",
+      "docText": "After Action 선택 상자를 누르면 Do nothing과 Run User Script 0~15 목록이 열립니다.",
+      "target": {
+        "css": ".AfterActionSettingBox [data-slot=select-box]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "pick-script",
+      "title": "스크립트 고르기",
+      "text": "Run User Script 0을 누르세요.",
+      "docText": "목록에서 Run User Script 0을 누릅니다. 사용자 스크립트 0번에 저장해 둔 명령이 실행되도록 고르는 것입니다.",
+      "target": {
+        "css": "[data-slot=select-option-text]",
+        "text": "Run User Script 0"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "save",
+      "title": "저장하기",
+      "text": "저장을 누르세요. 누르기 전에는 고른 값이 적용되지 않습니다.",
+      "docText": "저장을 누릅니다. 저장하기 전에는 고른 값이 적용되지 않으며, 초기화를 누르면 고르기 전 값으로 돌아갑니다.",
+      "target": {
+        "css": ".AfterActionSettingBox [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "title": "저장된 값 확인",
+      "text": "After Servo On 카드의 동작 종류가 Run User Script 0으로 바뀌었습니다. 기본값이 아닌 동작은 강조색으로 표시됩니다.",
+      "docText": "After Servo On 카드의 동작 종류가 Run User Script 0으로 바뀌고, 기본값(Do nothing)이 아닌 값이라 강조색으로 표시됩니다.",
+      "target": {
+        "css": ".AfterActionCard",
+        "nth": 1
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "After Servo On에 동작을 지정하고 저장했습니다. 다시 해 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

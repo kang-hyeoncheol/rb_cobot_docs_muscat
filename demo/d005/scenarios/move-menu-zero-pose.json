@@ -1,0 +1,36 @@
+{
+  "id": "move-menu-zero-pose",
+  "doc": "/manual/move-menu/zero-pose",
+  "title": "영점으로 이동 살펴보기",
+  "route": "/muscat/app/move",
+  "restore": "snapshot",
+  "steps": [
+    {
+      "id": "open",
+      "title": "영점으로 이동 열기",
+      "text": "오른쪽 메뉴에서 영점으로 이동을(를) 누르세요.",
+      "target": {
+        "css": "[data-testid=menu-item-zero-pose]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "panel",
+      "title": "영점으로 이동",
+      "text": "관절별 버튼과 전체 버튼이 있습니다. 실제 로봇에서는 버튼을 누르는 동안 해당 관절이 각도 0으로 이동하고 손을 떼면 멈춥니다.",
+      "target": {
+        "css": ".ZeroPoseControl"
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "영점으로 이동 메뉴의 화면을 살펴봤습니다. 다시 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

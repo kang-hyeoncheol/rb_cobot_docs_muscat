@@ -1,0 +1,36 @@
+{
+  "id": "move-menu-tcp-tool",
+  "doc": "/manual/move-menu/tcp-tool",
+  "title": "TCP 툴 살펴보기",
+  "route": "/muscat/app/move",
+  "restore": "snapshot",
+  "steps": [
+    {
+      "id": "open",
+      "title": "TCP 툴 열기",
+      "text": "오른쪽 메뉴에서 TCP 툴을(를) 누르세요.",
+      "target": {
+        "css": "[data-testid=menu-item-tcp-tool]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "panel",
+      "title": "TCP 툴",
+      "text": "현재 선택된 툴의 이름과 무게, 질량 중심, TCP 위치·회전 값이 보입니다. 아래의 변경 버튼은 툴 목록 창을 여는 버튼입니다.",
+      "target": {
+        "css": ".TCPToolControl"
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "TCP 툴 메뉴의 화면을 살펴봤습니다. 다시 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

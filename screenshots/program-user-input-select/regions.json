@@ -1,0 +1,100 @@
+{
+ "tree": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": [
+   [
+    517,
+    93,
+    1082,
+    360
+   ]
+  ]
+ },
+ "open-edit-2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": [
+   [
+    517,
+    93,
+    1082,
+    360
+   ]
+  ]
+ },
+ "select-item-2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-form-2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "mode-open": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "mode-pick": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "select-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-ask": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-var": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-select": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "run-start-2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-confirm-2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "select-dialog": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": [
+   [
+    517,
+    93,
+    1082,
+    360
+   ]
+  ]
+ },
+ "debug-dialog-2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": [
+   [
+    517,
+    93,
+    1082,
+    360
+   ]
+  ]
+ }
+}

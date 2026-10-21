@@ -1,0 +1,109 @@
+{
+  "id": "move-menu-workspace-create",
+  "doc": "/manual/move-menu/workspace",
+  "title": "워크스페이스 새로 만들기",
+  "route": "/muscat/app/move",
+  "initialState": {
+    "workspace": "empty"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "빈 워크스페이스를 새로 만들어 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요."
+    },
+    {
+      "id": "open",
+      "title": "워크스페이스 열기",
+      "text": "오른쪽 메뉴의 워크스페이스를 누르세요.",
+      "docText": "동작 화면의 오른쪽 메뉴에서 워크스페이스를 열면 편집 패널이 표시됩니다.",
+      "target": {
+        "css": "[data-testid=menu-item-workspace]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "modes",
+      "title": "베이스·툴 모드",
+      "text": "베이스는 로봇 주변 물체를 배치하는 모드이고, 툴은 툴에 부착할 물체를 구성하는 모드입니다. 이번 실습은 베이스에서 진행합니다.",
+      "docText": "베이스 탭은 주변 물체를, 툴 탭은 툴에 부착할 물체를 구성합니다. 이 예제는 베이스 탭을 사용합니다.",
+      "target": {
+        "css": ".WorkspaceControl [role=tablist]"
+      }
+    },
+    {
+      "id": "workspace-intro",
+      "title": "새로 만들기와 불러오기",
+      "text": "새로 만들기는 빈 워크스페이스를 만드는 기능입니다. 불러오기는 저장한 구성을 다시 여는 기능입니다. 다음 단계에서 새로 만들어 봅니다.",
+      "docText": "초기화면의 새로 만들기로 빈 워크스페이스를 생성하고, 불러오기로 저장된 구성을 엽니다.",
+      "target": {
+        "css": ".WorkspaceControl"
+      }
+    },
+    {
+      "id": "create-workspace",
+      "title": "직접 해 보기 · 새로 만들기",
+      "text": "오른쪽 패널의 강조된 새로 만들기 버튼을 누르세요. 이름 입력창이 열리면 demo_cell을 입력하고 확인을 누르세요. 오브젝트 리스트가 보이면 생성 완료입니다.",
+      "docText": "새로 만들기를 누르고 이름에 demo_cell을 입력한 뒤 확인합니다. 워크스페이스 이름과 오브젝트 리스트가 표시됩니다.",
+      "target": {
+        "css": "[role=dialog] [data-slot=text-input]:has(input[placeholder=\"워크스페이스 이름을 입력하세요\"])",
+        "fallback": {
+          "css": ".WorkspaceControl button",
+          "text": "새로 만들기",
+          "fallback": {
+            "css": ".WorkspaceControl span",
+            "text": "오브젝트 리스트"
+          }
+        }
+      },
+      "free": true,
+      "open": [
+        {
+          "css": "[role=dialog]:has(input[placeholder=\"워크스페이스 이름을 입력하세요\"]) button",
+          "text": "확인"
+        }
+      ],
+      "requireEnabled": {
+        "css": ".WorkspaceControl button[aria-label=\"워크스페이스 메뉴\"]"
+      },
+      "hint": "새로 만들기 → 이름 demo_cell 입력 → 확인",
+      "perform": [
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl button",
+            "text": "새로 만들기"
+          }
+        },
+        {
+          "type": "demo_cell",
+          "target": {
+            "css": "[role=dialog] input[placeholder=\"워크스페이스 이름을 입력하세요\"]"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[role=dialog] button",
+            "text": "확인"
+          }
+        }
+      ],
+      "also": [
+        {
+          "css": "[role=dialog]:has(input[placeholder=\"워크스페이스 이름을 입력하세요\"])"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "워크스페이스를 새로 만들었습니다. 도형을 더하는 방법은 도형 추가 실습에서 이어집니다. 다시 하기는 실습을 처음 상태로 초기화합니다."
+    }
+  ]
+}

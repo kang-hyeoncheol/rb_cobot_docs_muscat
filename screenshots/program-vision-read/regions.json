@@ -1,0 +1,76 @@
+{
+ "pick-empty": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    517,
+    45,
+    103,
+    295
+   ]
+  ]
+ },
+ "open-add": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    394,
+    93,
+    226,
+    247
+   ]
+  ]
+ },
+ "pick-vision2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-form2": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "func-open": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "func-pick": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "read-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-var": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "var-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "resolve-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-read": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

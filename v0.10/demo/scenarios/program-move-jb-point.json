@@ -1,0 +1,450 @@
+{
+  "id": "program-move-jb-point",
+  "doc": "/manual/program/move-jb",
+  "title": "동작 JB 포인트 설정",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Wait",
+            "name": "program.button.wait",
+            "funcName": "rb_program_sdk.wait",
+            "summary": "1s",
+            "args": {
+              "second": 1
+            }
+          },
+          {
+            "method": "Empty",
+            "name": "program.button.empty"
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program",
+    "speedBar": 1
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "프로그램에 동작 JB를 넣고, 포인트의 목표 값과 블렌드율을 정해 봅니다. 이 화면의 로봇은 가상이라 실제 로봇은 움직이지 않습니다."
+    },
+    {
+      "id": "pick-empty",
+      "title": "넣을 위치 고르기",
+      "text": "트리의 빈 영역을 눌러 명령을 넣을 위치를 선택하세요.",
+      "docText": "프로그램 트리에서 명령을 넣을 위치의 빈 영역을 누릅니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "빈 영역"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "open-add",
+      "title": "명령어 목록 열기",
+      "text": "편집 아이콘을 눌러 명령어 목록을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 명령어 목록이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "pick-cmd",
+      "title": "동작 JB 고르기",
+      "text": "아래 매니퓰레이트 명령어에서 동작 JB를 누르세요.\n\n• 목록을 아래로 내리지 않아도 강조된 곳을 누를 수 있습니다.",
+      "docText": "매니퓰레이트 명령어에서 동작 JB를 누릅니다. 트리에 동작 JB가 추가되고, 그 안에 첫 번째 포인트가 함께 만들어집니다. 포인트는 로봇의 현재 자세로 채워집니다.",
+      "target": {
+        "css": ".CommandListPanel button[data-slot=button]",
+        "text": "동작 JB"
+      },
+      "also": [
+        {
+          "css": ".CommandListPanel"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeItem .command-text",
+            "text": "빈 영역"
+          },
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "tree-result",
+      "title": "트리에 추가된 동작 JB",
+      "text": "동작 JB 아래에 포인트가 하나 들어 있습니다.\n\n• 동작 JB는 이 포인트들을 하나의 동작으로 묶어 실행합니다.\n\n다음을 누르세요.",
+      "docText": "트리에 동작 JB가 추가되고 그 아래에 포인트가 하나 들어갑니다. 동작 JB는 아래에 놓인 포인트들을 하나의 동작으로 묶어 실행합니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "동작 JB"
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "open-form",
+      "title": "동작 JB 열기",
+      "text": "트리에서 동작 JB를 눌러 설정 화면을 엽니다.",
+      "docText": "트리에서 동작 JB를 누르면 오른쪽에 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "동작 JB"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".CommandListPanel"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "form-intro",
+      "title": "동작 JB 설정 화면",
+      "text": "동작 JB의 설정 화면입니다.\n\n• 구성 영역에서 동작 유형과 옵션을 확인하고 메모를 남길 수 있습니다.\n• 오른쪽 위의 포인트 추가로 지나갈 포인트를 더합니다.\n• 동작 유형을 바꾸면 다른 동작(J·L·LB·XB)으로 바뀝니다.\n\n다음을 누르세요.",
+      "docText": "구성 영역에는 로봇 모델, 동작 유형, 옵션, 메모가 있고 오른쪽 위의 포인트 추가로 지나갈 포인트를 더합니다. 동작 유형을 바꾸면 같은 포인트를 쓰는 다른 동작(J·L·JB·LB·XB)으로 바뀝니다.",
+      "target": {
+        "css": ".ManiMoveCommandForm .CommandMiddleSectionTemplate",
+        "nth": 0
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiMoveCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "동작 JB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add-point",
+      "title": "포인트 추가",
+      "text": "포인트 추가를 눌러 두 번째 포인트를 더하세요.\n\n• 새 포인트의 설정 화면이 열립니다.",
+      "docText": "포인트 추가를 누르면 동작 JB 아래에 새 포인트가 더해지고 그 포인트의 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ManiMoveCommandForm [data-slot=label-button]",
+        "text": "포인트 추가"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiMoveCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "동작 JB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "point-intro",
+      "title": "포인트 설정 화면",
+      "text": "포인트의 설정 화면입니다.\n\n• 포인트 이름·메모, 목표 포인트(조인트 값), 속도, 블렌드 등을 정합니다.\n• 목표 포인트는 로봇의 현재 값으로 이미 채워져 있고, 현재값 가져오기로 다시 읽어 올 수 있습니다.\n\n다음을 누르세요.",
+      "docText": "포인트 설정 화면에서는 포인트 이름과 메모, 목표 포인트(조인트 값), 속도, 블렌드 등을 정합니다. 목표 포인트는 로봇의 현재 값으로 채워지며 현재값 가져오기로 다시 읽어 올 수 있습니다.",
+      "target": {
+        "css": ".ManiPointCommandForm .CommandMiddleSectionTemplate",
+        "nth": 1
+      },
+      "also": [
+        {
+          "css": ".ManiPointCommandForm .CommandMiddleSectionTemplate",
+          "nth": 0
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-target",
+      "title": "목표 값 입력",
+      "text": "목표 포인트의 J0 에 45 를 입력하세요.\n\n• 조인트 공간이라 J0~J6 의 각도(deg)를 입력합니다. 지금 값은 로봇의 현재 자세입니다.\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "목표 포인트의 J0에 각도를 입력합니다. 조인트 공간에서는 J0~J6의 각도(deg)를 입력하며, 예에서는 J0을 45로 정합니다.",
+      "target": {
+        "css": ".ManiPointCommandForm [data-slot=text-input]:has(input:not([name]))",
+        "nth": 0
+      },
+      "hint": "안내된 값을 입력하세요: 45",
+      "perform": [
+        {
+          "type": "45",
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 0
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 1
+            }
+          ]
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".ManiPointCommandForm input:not([name])",
+          "nth": 0
+        },
+        "equals": "45"
+      }
+    },
+    {
+      "id": "type-blend",
+      "title": "블렌드율 입력",
+      "text": "아래 블렌드 영역에서 블렌드율의 기존 값(100)을 지우고 50 을 입력하세요.\n\n• 블렌드율은 이 포인트에서 다음 포인트로 이어 갈 때 적용하는 값입니다.\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "블렌드 영역의 블렌드율(%)에 값을 입력합니다. 예에서는 50 을 입력합니다. 블렌드율은 이 포인트에서 다음 포인트로 이어 갈 때 적용하는 값입니다.",
+      "target": {
+        "css": ".ManiPointCommandForm .CommandMiddleSectionTemplate",
+        "text": "블렌드"
+      },
+      "hint": "안내된 값을 입력하세요: 50",
+      "perform": [
+        {
+          "type": "50",
+          "target": {
+            "css": ".ManiPointCommandForm input[name=pnt_para]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 1
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".ManiPointCommandForm input:not([name])",
+          "nth": 0
+        },
+        "value": "45.000",
+        "replaceIf": "0.000"
+      },
+      "requireValue": {
+        "target": {
+          "css": ".ManiPointCommandForm input[name=pnt_para]"
+        },
+        "equals": "50"
+      }
+    },
+    {
+      "id": "blend-result",
+      "title": "블렌드율 확인",
+      "text": "블렌드율을 50으로 정했습니다.\n\n• 이 포인트에서 다음 포인트로 이어 갈 때 이 값이 적용됩니다.\n• 저장하기 전에는 트리에 적용되지 않습니다.\n\n다음을 누르세요.",
+      "docText": "블렌드율을 50으로 정하면 이 포인트에서 다음 포인트로 이어 갈 때 50%가 적용됩니다. 저장하기 전에는 트리에 적용되지 않습니다.",
+      "target": {
+        "css": ".ManiPointCommandForm .CommandMiddleSectionTemplate",
+        "text": "블렌드"
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 1
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 0
+          },
+          "value": "45.000",
+          "replaceIf": "0.000"
+        },
+        {
+          "target": {
+            "css": ".ManiPointCommandForm input[name=pnt_para]"
+          },
+          "value": "50",
+          "replaceIf": "100"
+        }
+      ]
+    },
+    {
+      "id": "save-point",
+      "title": "포인트 저장",
+      "text": "저장을 눌러 포인트를 적용하세요.",
+      "docText": "저장을 누르면 포인트가 적용되고 설정 화면이 닫힙니다. 트리의 포인트에 목표 값이 표시됩니다.",
+      "target": {
+        "css": ".ManiPointCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 1
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 0
+          },
+          "value": "45.000",
+          "replaceIf": "0.000"
+        },
+        {
+          "target": {
+            "css": ".ManiPointCommandForm input[name=pnt_para]"
+          },
+          "value": "50",
+          "replaceIf": "100"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "동작 JB를 추가하고 포인트의 목표 값과 블렌드율을 정해 저장했습니다."
+    }
+  ]
+}

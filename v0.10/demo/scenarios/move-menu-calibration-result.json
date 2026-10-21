@@ -1,0 +1,168 @@
+{
+  "id": "move-menu-calibration-result",
+  "doc": "/manual/move-menu/calibration",
+  "title": "교정 결과 확인하기",
+  "route": "/muscat/app/move",
+  "steps": [
+    {
+      "id": "open",
+      "title": "교정 열기",
+      "text": "오른쪽 메뉴에서 교정을(를) 누르세요.",
+      "target": {
+        "css": "[data-testid=menu-item-calibration]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "collect",
+      "title": "자세를 바꿔 포인트 쌓기",
+      "text": "조그 패널의 + / − 로 로봇의 자세를 바꾸고 추가를 눌러 포인트를 쌓으세요. TCP 끝은 같은 점에 둔 채 자세를 서로 다르게, 4개 이상 쌓으면 다음으로 넘어갈 수 있습니다. (다른 메뉴로 이동하면 목록이 사라져서 조그 패널을 이 화면 위에 열어 두었습니다.)",
+      "docText": "조그 패널의 + / − 로 로봇의 자세를 바꾸고 추가를 눌러 포인트를 쌓습니다. TCP 끝은 같은 점에 둔 채 자세를 서로 다르게, 4개 이상 쌓습니다. 다른 메뉴로 이동하면 목록이 사라집니다.",
+      "target": {
+        "css": ".CalibrationControl [data-slot=label-button]",
+        "text": "추가"
+      },
+      "hint": "자세를 바꾸고 추가를 눌러 보세요",
+      "ensure": {
+        "when": {
+          "css": ".ManipulateJogControl"
+        },
+        "press": [
+          {
+            "css": "#ghost-robot-tooltip"
+          },
+          {
+            "css": "[data-testid=ghost-robot-switch]"
+          },
+          {
+            "css": "[data-slot=label-button]",
+            "text": "Control Panel"
+          },
+          {
+            "css": "#ghost-robot-tooltip"
+          }
+        ]
+      },
+      "perform": [
+        {
+          "hold": 1200,
+          "target": {
+            "css": "[data-slot=side-number-input-increase]",
+            "nth": 3
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": ".CalibrationControl [data-slot=label-button]",
+            "text": "추가"
+          }
+        },
+        {
+          "hold": 1200,
+          "target": {
+            "css": "[data-slot=side-number-input-increase]",
+            "nth": 4
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": ".CalibrationControl [data-slot=label-button]",
+            "text": "추가"
+          }
+        },
+        {
+          "hold": 1200,
+          "target": {
+            "css": "[data-slot=side-number-input-increase]",
+            "nth": 5
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": ".CalibrationControl [data-slot=label-button]",
+            "text": "추가"
+          }
+        },
+        {
+          "hold": 1200,
+          "target": {
+            "css": "[data-slot=side-number-input-increase]",
+            "nth": 3
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": ".CalibrationControl [data-slot=label-button]",
+            "text": "추가"
+          }
+        }
+      ],
+      "open": [
+        {
+          "css": ".ManipulateJogControl"
+        }
+      ],
+      "also": [
+        {
+          "css": ".TCPPosCalibaration"
+        }
+      ],
+      "minCount": {
+        "css": ".TCPPosCalibaration .bg-bg-card",
+        "min": 4,
+        "label": "쌓은 포인트"
+      }
+    },
+    {
+      "id": "apply",
+      "title": "적용",
+      "text": "포인트가 4개 이상 쌓였습니다. 적용을 누르면 목록의 관절 값이 컨트롤러로 전송되어 TCP 위치(X·Y·Z)를 계산하고, 결과가 메시지로 나옵니다.",
+      "docText": "포인트가 4개 이상 쌓였습니다. 적용을 누르면 목록의 관절 값이 컨트롤러로 전송되어 TCP 위치(X·Y·Z)를 계산하고, 결과가 메시지로 나옵니다.",
+      "target": {
+        "css": ".CalibrationControl [data-slot=label-button]",
+        "text": "적용"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "title": "계산 결과",
+      "text": "컨트롤러가 보낸 메시지입니다. Auto TCP Result 아래의 X·Y·Z가 계산된 TCP 위치이고 RMSE는 포인트들이 서로 어긋난 정도(작을수록 좋음)입니다. 이 값은 TCP 툴에 자동으로 저장되지 않습니다. 확인을 눌러 닫으세요.",
+      "docText": "컨트롤러가 보낸 메시지입니다. Auto TCP Result 아래의 X·Y·Z가 계산된 TCP 위치이고 RMSE는 포인트들이 서로 어긋난 정도입니다. 이 값은 TCP 툴에 자동으로 저장되지 않습니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "확인"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "also": [
+        {
+          "css": "[role=dialog]"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "자세를 바꿔 포인트를 4개 이상 쌓고 적용해 TCP 위치 계산 결과를 확인했습니다. 다시 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

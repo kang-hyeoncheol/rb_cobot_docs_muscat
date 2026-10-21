@@ -1,0 +1,403 @@
+{
+  "id": "program-user-input-input",
+  "doc": "/manual/program/user-input",
+  "title": "사용자 입력",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "funcName": "rb_program_sdk.set_variables",
+            "summary": "STRING: user_name=\"\"",
+            "args": {
+              "variables": [
+                {
+                  "type": "STRING",
+                  "name": "user_name",
+                  "init_value": "\"\""
+                }
+              ]
+            }
+          },
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "funcName": "rb_program_sdk.set_variables",
+            "summary": "NUMERIC: answer=0",
+            "args": {
+              "variables": [
+                {
+                  "type": "NUMERIC",
+                  "name": "answer",
+                  "init_value": 0
+                }
+              ]
+            }
+          },
+          {
+            "method": "Empty",
+            "name": "program.button.empty"
+          },
+          {
+            "method": "Debug",
+            "name": "program.button.debug",
+            "funcName": "rb_program_sdk.debug_variables",
+            "summary": "user_name, answer",
+            "args": {
+              "option": "DIALOG",
+              "is_only_at_ui": false,
+              "variables": [
+                "user_name",
+                "answer"
+              ],
+              "pause_option": "ALL"
+            }
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "사용자 입력을 알아봅니다",
+      "text": "사용자 입력은 프로그램을 실행하는 도중 사용자에게 값을 묻는 명령입니다. 이 실습에서는 사용자 입력 명령을 만들어 실행하고 입력한 값이 변수에 적용되는 것을 확인합니다. 이 화면의 로봇은 실제로 움직이지 않습니다."
+    },
+    {
+      "id": "tree",
+      "title": "프로그램 살펴보기",
+      "text": "문자열 변수 user_name과 숫자 변수 answer가 선언되어 있고, 끝에 디버그가 두 값을 보여 줍니다. 가운데 빈 영역에 사용자 입력을 넣습니다. 다음을 누르세요.",
+      "docText": "예제 프로그램은 문자열 변수 `user_name`과 숫자 변수 `answer`를 선언하고, 끝의 디버그가 두 값을 보여 줍니다. 가운데 빈 영역에 사용자 입력 명령을 넣습니다.",
+      "target": {
+        "css": ".ProgramTreeBox"
+      },
+      "shot": "full"
+    },
+    {
+      "id": "pick-empty",
+      "title": "넣을 위치 고르기",
+      "text": "트리의 빈 영역을 눌러 명령을 넣을 위치를 선택하세요.",
+      "docText": "프로그램 트리에서 명령을 넣을 위치의 빈 영역을 누릅니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "빈 영역"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "open-add",
+      "title": "명령어 목록 열기",
+      "text": "편집 아이콘을 눌러 명령어 목록을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 명령어 목록이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "pick-input",
+      "title": "사용자 입력 고르기",
+      "text": "사용자 입력을(를) 누르세요.",
+      "docText": "공통 명령어에서 사용자 입력을 누릅니다. 선택한 자리에 사용자 입력 명령이 추가됩니다.",
+      "target": {
+        "css": ".CommandListPanel button[data-slot=button]",
+        "text": "사용자 입력"
+      },
+      "also": [
+        {
+          "css": ".CommandListPanel"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeItem .command-text",
+            "text": "빈 영역"
+          },
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "open-form",
+      "title": "사용자 입력 열기",
+      "text": "트리에 추가된 사용자 입력을 눌러 설정 화면을 엽니다.",
+      "docText": "트리에 추가된 사용자 입력을 누르면 오른쪽에 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "사용자 입력"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "form-intro",
+      "title": "사용자 입력 설정 화면",
+      "text": "옵션에서 사용자 입력과 사용자 선택 중 동작을 고르고, 아래 영역에서 세부 값을 정합니다. 지금은 사용자 입력이 골라져 있고, 입력받은 값을 저장할 변수의 유형과 이름을 정합니다. 변수 유형은 STRING, 변수는 user_name이 골라져 있습니다. 다음을 누르세요.",
+      "docText": "설정 화면의 옵션에서 사용자 입력과 사용자 선택 중 하나를 고릅니다. 사용자 입력은 변수 설정에서 입력받은 값을 저장할 변수의 유형과 이름을 정합니다. 변수 선택에는 앞에서 선언한 변수 중 고른 유형의 변수가 나타납니다.",
+      "target": {
+        "css": ".UserInputCommandForm .CommandMiddleSectionTemplate",
+        "nth": 1
+      },
+      "also": [
+        {
+          "css": ".UserInputCommandForm .CommandMiddleSectionTemplate",
+          "nth": 0
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".UserInputCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "사용자 입력"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-input",
+      "title": "저장",
+      "text": "저장을 눌러 적용하세요.",
+      "docText": "저장을 누르면 트리의 사용자 입력 옆에 `STRING: user_name`처럼 유형과 변수 이름이 표시됩니다.",
+      "target": {
+        "css": ".UserInputCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".UserInputCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "사용자 입력"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "run-start",
+      "title": "프로그램 실행",
+      "text": "재생(▶) 버튼을 눌러 프로그램을 실행하세요.",
+      "docText": "재생(▶) 버튼을 눌러 프로그램을 실행합니다. 프로그램을 바꾼 뒤이므로 저장 확인 창이 나타납니다.",
+      "target": {
+        "css": ".ProgramControlBtns button",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "save-confirm",
+      "title": "저장 후 실행",
+      "text": "프로그램을 바꾼 뒤 실행하면 저장하고 실행할지 묻습니다. 저장을 누르세요.",
+      "docText": "프로그램을 바꾼 뒤 실행하면 **프로그램 변경 확인** 창이 나타나 저장 후 실행할지 묻습니다. **저장**을 누르면 저장하고 실행합니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "저장"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "input-dialog",
+      "title": "사용자 변수 값 변경 창",
+      "text": "변수 유형과 변수 이름(현재 값)이 나타나고, 적용할 값을 입력할 수 있습니다. 프로그램은 입력을 기다리며 멈춰 있습니다. 문자열은 큰따옴표로 감싸야 하므로, 적용할 값에 \"Robot_A\" 를 큰따옴표까지 포함해 입력하세요. 공백은 있어도 괜찮고, 건너뛰면 자동으로 입력됩니다.",
+      "docText": "사용자 입력 명령에 이르면 프로그램이 멈추고 **사용자 변수 값 변경** 창이 나타납니다. **변수 유형**(STRING)과 **변수**(변수 이름과 현재 값)가 표시되고, **적용할 값**에 새 값을 입력합니다. 문자열은 큰따옴표로 감싸서 입력하며(예: `\"Robot_A\"`), 창 아래에 유형별 입력 예시가 있습니다.",
+      "target": {
+        "css": "[role=dialog] [data-slot=text-field]",
+        "nth": 2
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": "[role=dialog] input:not([readonly])"
+        },
+        "equals": "\"Robot_A\""
+      },
+      "hint": "안내된 값을 입력하세요: \"Robot_A\"",
+      "perform": [
+        {
+          "type": "\"Robot_A\"",
+          "target": {
+            "css": "[role=dialog] input:not([readonly])"
+          }
+        }
+      ],
+      "shot": "full",
+      "lift": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ]
+    },
+    {
+      "id": "apply",
+      "title": "반영 후 계속",
+      "text": "반영 후 계속을 누르면 입력한 값이 변수에 적용되고 프로그램이 이어서 실행됩니다. 스킵은 값을 바꾸지 않고 이어서 실행하고, 프로그램 정지는 프로그램을 멈춥니다.",
+      "docText": "**반영 후 계속**을 누르면 입력한 값이 변수에 적용되고 프로그램이 이어서 실행됩니다. **스킵**은 값을 바꾸지 않고 이어서 실행하고, **프로그램 정지**는 프로그램을 멈춥니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "반영 후 계속"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "fill": {
+        "target": {
+          "css": "[role=dialog] input:not([readonly])"
+        },
+        "value": "\"Robot_A\""
+      },
+      "lift": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ]
+    },
+    {
+      "id": "debug-dialog",
+      "title": "바뀐 값 확인",
+      "text": "디버그 창이 user_name: \"Robot_A\" 를 보여 줍니다. 입력한 문자열이 변수에 적용되었습니다. answer는 아직 0.0 입니다. Resume을 눌러 프로그램을 끝내세요. 왼쪽 트리에는 지금 실행 중인 명령이 노란색으로 표시됩니다.",
+      "docText": "입력한 값이 변수에 적용되어, 이어지는 디버그 창에 `user_name: \"Robot_A\"`가 표시됩니다. 문자열은 큰따옴표로 감싸 표시되고, 아직 바꾸지 않은 `answer`는 `0.0`입니다. 트리에는 지금 실행 중인 명령이 노란색으로 표시됩니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "Resume"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "lift": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "사용자 입력 명령을 만들고, 실행 중 나타나는 창에서 입력한 값이 변수에 적용되는 것을 확인했습니다."
+    }
+  ]
+}

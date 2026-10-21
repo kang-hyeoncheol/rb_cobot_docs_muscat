@@ -1,0 +1,520 @@
+{
+  "id": "program-vision-read",
+  "doc": "/manual/program/vision",
+  "title": "비전 위치 읽기",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Vision",
+            "name": "program.button.vision",
+            "summary": "MechMind Interface - [Create Connection] 192.168.0.10:50000",
+            "funcName": "rb_manipulate_sdk.vision.vision",
+            "args": {
+              "option": "MECHMIND_INTERFACE",
+              "data": {
+                "type": "CONNECT",
+                "position": "EYE_IN_HAND",
+                "function_code": 99,
+                "timeout_sec": 10,
+                "server_ip": "192.168.0.10",
+                "server_port": 50000,
+                "resolve_option": "SKIP"
+              }
+            }
+          },
+          {
+            "method": "Empty",
+            "name": "program.button.empty"
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "비전 위치 읽기",
+      "text": "연결이 만들어진 프로그램에 물체의 위치를 읽는 비전 명령을 더해 봅니다.\n\n• 이 실습에는 실제 카메라가 없으며, 프로그램을 실행하지 않고 설정만 해 봅니다."
+    },
+    {
+      "id": "pick-empty",
+      "title": "넣을 위치 고르기",
+      "text": "트리의 빈 영역을 눌러 명령을 넣을 위치를 선택하세요.",
+      "docText": "프로그램 트리에서 명령을 넣을 위치의 빈 영역을 누릅니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "빈 영역"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "open-add",
+      "title": "명령어 목록 열기",
+      "text": "편집 아이콘을 눌러 명령어 목록을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 명령어 목록이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "pick-vision2",
+      "title": "비전 한 번 더 추가",
+      "text": "물체 위치를 읽는 명령을 만들기 위해 비전을 한 번 더 누르세요.\n\n• 명령어 목록이 닫혀 있으면 편집 아이콘을 먼저 누르세요.",
+      "docText": "같은 방법으로 비전 명령을 하나 더 추가합니다. 카메라에서 물체의 위치를 읽는 명령으로 만듭니다.",
+      "target": {
+        "css": ".CommandListPanel button[data-slot=button]",
+        "text": "비전"
+      },
+      "also": [
+        {
+          "css": ".CommandListPanel"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeItem .command-text",
+            "text": "빈 영역"
+          },
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "open-form2",
+      "title": "두 번째 비전 열기",
+      "text": "새로 추가된 두 번째 비전을 눌러 설정 화면을 엽니다.",
+      "docText": "새로 추가된 두 번째 비전을 눌러 설정 화면을 엽니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "비전",
+        "nth": 1
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".CommandListPanel"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "func-open",
+      "title": "함수 목록 열기",
+      "text": "함수 목록 선택 상자를 눌러 목록을 엽니다.",
+      "docText": "함수 목록(코드) 선택 상자를 누르면 연결 생성, 레시피 설정, 트리거, 트리거 & 자세 읽기, 자세 읽기 목록이 열립니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".VisionCommandForm .MechMindInterface .CommandMiddleSectionTemplate",
+          "nth": 0
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "func-pick",
+      "title": "트리거 & 자세 읽기 고르기",
+      "text": "트리거 & 자세 읽기를 누르세요.\n\n• 촬영을 요청하고 인식한 물체의 위치까지 한 번에 읽는 기능입니다.",
+      "docText": "목록에서 트리거 & 자세 읽기를 누르면 아래에 읽기 설정이 나타납니다. IP 주소·포트·타임 아웃·설치 위치는 앞의 연결 생성 설정을 따라 바꿀 수 없게 됩니다.",
+      "target": {
+        "css": "[data-slot=select-option-text]",
+        "text": "트리거 & 자세 읽기"
+      },
+      "also": [
+        {
+          "css": ".VisionCommandForm .MechMindInterface .CommandMiddleSectionTemplate",
+          "nth": 0
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": "[data-slot=select-option-text]",
+            "text": "트리거 & 자세 읽기"
+          },
+          "press": [
+            {
+              "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-intro",
+      "title": "읽기 설정",
+      "text": "읽기 설정입니다.\n\n• Project ID, 읽은 위치를 저장할 변수 이름, 실패했을 때의 처리 방식을 정합니다.\n\n다음을 누르세요.",
+      "docText": "읽기 설정에서는 Project ID, 읽은 위치를 저장할 변수 이름, 실패했을 때의 처리 방식을 정합니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindCmdRead"
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".VisionCommandForm input[name=return_variable_name]"
+          },
+          "press": [
+            {
+              "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "트리거 & 자세 읽기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-var",
+      "title": "반환 변수명 입력",
+      "text": "반환 변수명에 poses 를 입력하세요.\n\n• 읽은 위치 목록이 이 변수에 저장됩니다.\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "반환 변수명에 읽은 위치를 저장할 변수 이름을 입력합니다. 예에서는 poses 를 입력합니다. 비워 두면 저장할 수 없습니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindCmdRead [data-slot=text-field]",
+        "nth": 1
+      },
+      "hint": "안내된 값을 입력하세요: poses",
+      "perform": [
+        {
+          "type": "poses",
+          "target": {
+            "css": ".VisionCommandForm input[name=return_variable_name]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".VisionCommandForm input[name=return_variable_name]"
+          },
+          "press": [
+            {
+              "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "트리거 & 자세 읽기"
+            }
+          ]
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".VisionCommandForm input[name=return_variable_name]"
+        },
+        "equals": "poses"
+      }
+    },
+    {
+      "id": "var-result",
+      "title": "반환 변수 확인",
+      "text": "읽은 위치 목록은 poses 변수에 저장됩니다.\n\n• 위치는 [x, y, z, rx, ry, rz] 형태의 값입니다.\n• 저장하기 전에는 적용되지 않습니다.\n\n다음을 누르세요.",
+      "docText": "읽은 위치 목록은 반환 변수명에 입력한 poses 변수에 저장됩니다. 위치는 [x, y, z, rx, ry, rz] 형태의 값입니다. 저장하기 전에는 적용되지 않습니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindCmdRead span",
+        "text": "반환 변수명",
+        "up": 1
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".VisionCommandForm input[name=return_variable_name]"
+          },
+          "press": [
+            {
+              "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "트리거 & 자세 읽기"
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".VisionCommandForm input[name=return_variable_name]"
+        },
+        "value": "poses"
+      }
+    },
+    {
+      "id": "resolve-intro",
+      "title": "실패 처리 방식",
+      "text": "실패 처리 방식은 카메라와의 통신이 실패했을 때 프로그램이 어떻게 할지 정합니다.\n\n• 무시 후 진행, 즉시 중단, 사용자 확인 중에서 고르며, 처음에는 무시 후 진행입니다.\n\n다음을 누르세요.",
+      "docText": "실패 처리 방식은 카메라와의 통신이 실패했을 때 프로그램이 어떻게 할지 정합니다. 무시 후 진행, 즉시 중단, 사용자 확인 중에서 고르며, 처음에는 무시 후 진행입니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindCmdRead [data-slot=text-field]",
+        "nth": 2
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".VisionCommandForm input[name=return_variable_name]"
+          },
+          "press": [
+            {
+              "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "트리거 & 자세 읽기"
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".VisionCommandForm input[name=return_variable_name]"
+        },
+        "value": "poses"
+      }
+    },
+    {
+      "id": "save-read",
+      "title": "읽기 설정 저장",
+      "text": "저장을 눌러 적용하세요.",
+      "docText": "저장을 누르면 설정이 적용됩니다. 트리의 두 번째 비전 옆에 [Trigger & Read Pose]와 카메라 주소가 표시됩니다.",
+      "target": {
+        "css": ".VisionCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".VisionCommandForm input[name=return_variable_name]"
+          },
+          "press": [
+            {
+              "css": ".VisionCommandForm .MechMindInterface [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "트리거 & 자세 읽기"
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".VisionCommandForm input[name=return_variable_name]"
+        },
+        "value": "poses"
+      }
+    },
+    {
+      "id": "result",
+      "title": "완성된 비전 명령",
+      "text": "비전 명령 두 개가 만들어졌습니다.\n\n• 프로그램을 실행하면 첫 번째에서 카메라에 연결하고, 두 번째에서 촬영해 읽은 물체 위치를 poses 변수에 저장합니다.\n\n다음을 누르세요.",
+      "docText": "비전 명령 두 개가 만들어집니다. 프로그램을 실행하면 첫 번째 명령에서 카메라에 연결하고, 두 번째 명령에서 촬영해 읽은 물체 위치를 변수에 저장합니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "비전",
+        "nth": 1
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "비전 명령으로 카메라에서 물체의 위치를 읽는 설정을 만들었습니다."
+    }
+  ]
+}

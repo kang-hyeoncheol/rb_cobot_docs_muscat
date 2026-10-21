@@ -1,0 +1,76 @@
+{
+ "pick-empty": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    517,
+    67,
+    103,
+    273
+   ]
+  ]
+ },
+ "open-add": {
+  "w": 620,
+  "h": 340,
+  "dynamic": [
+   [
+    394,
+    93,
+    226,
+    247
+   ]
+  ]
+ },
+ "pick-cmd": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "tree-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-form": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "form-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "mech-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-ip": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "type-timeout": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "connect-values": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save-connect": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "connect-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

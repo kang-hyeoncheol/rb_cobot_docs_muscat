@@ -1,0 +1,54 @@
+{
+  "releases": {
+    "d005": {
+      "status": "verified",
+      "fe": "0.10.3",
+      "nexus": "0.10.3",
+      "runtime": "31e8d5878e6c",
+      "capabilities": [
+        "jog-robot-cartesian",
+        "jog-robot-joint",
+        "jog-robot-speed",
+        "move-menu-calibration-result",
+        "move-menu-calibration-warning",
+        "move-menu-global-pinpoint",
+        "move-menu-master",
+        "move-menu-move-io",
+        "move-menu-record",
+        "move-menu-tcp-tool",
+        "move-menu-weld",
+        "move-menu-workspace-add",
+        "move-menu-workspace-create",
+        "move-menu-workspace-edit",
+        "move-menu-workspace-free",
+        "move-menu-workspace-manage",
+        "move-menu-workspace-save",
+        "move-menu-zero-pose",
+        "program-create",
+        "program-force-control",
+        "program-if-branch",
+        "program-if-compare",
+        "program-if-condition",
+        "program-move-jb-point",
+        "program-move-jb-points",
+        "program-move-jb-run",
+        "program-repeat-break",
+        "program-repeat-run",
+        "program-repeat-while",
+        "program-set",
+        "program-user-input-input",
+        "program-user-input-select",
+        "program-vision-connect",
+        "program-vision-read",
+        "settings-after-action",
+        "settings-collision-detection-external",
+        "settings-collision-detection-self",
+        "settings-welding"
+      ]
+    }
+  },
+  "docs": {
+    "latest": "d005",
+    "v0.10": "d005"
+  }
+}

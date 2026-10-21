@@ -1,0 +1,314 @@
+{
+  "id": "program-repeat-break",
+  "doc": "/manual/program/repeat",
+  "title": "반복중단으로 반복 끝내기",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "summary": "NUMERIC: count=0",
+            "funcName": "rb_program_sdk.set_variables",
+            "args": {
+              "variables": [
+                {
+                  "type": "NUMERIC",
+                  "name": "count",
+                  "init_value": 0
+                }
+              ]
+            }
+          },
+          {
+            "method": "Repeat",
+            "name": "program.button.repeat",
+            "summary": "While => count < 3",
+            "args": {
+              "count": null,
+              "while_cond": "count < 3",
+              "do_while": null
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "summary": "count += 1",
+                "funcName": "rb_program_sdk.make_script",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "count += 1"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              },
+              {
+                "method": "Debug",
+                "name": "program.button.debug",
+                "summary": "count",
+                "funcName": "rb_program_sdk.debug_variables",
+                "args": {
+                  "option": "DIALOG",
+                  "is_only_at_ui": false,
+                  "variables": [
+                    "count"
+                  ],
+                  "pause_option": "ALL"
+                }
+              },
+              {
+                "method": "Condition",
+                "name": "program.button.condition",
+                "summary": "count == 2",
+                "args": {
+                  "condition": "count == 2",
+                  "condition_type": "If"
+                },
+                "children": [
+                  {
+                    "method": "Empty",
+                    "name": "program.button.empty",
+                    "summary": ""
+                  }
+                ],
+                "extra": {
+                  "groupId": "g1",
+                  "groupFirstItem": true,
+                  "requireChildren": true
+                }
+              }
+            ],
+            "extra": {
+              "requireChildren": true
+            }
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "반복중단으로 반복 끝내기",
+      "text": "반복 안의 조건문에 반복중단을 넣어, 조건이 참이 되면 반복을 끝내 봅니다. 이 화면의 로봇은 실제로 움직이지 않습니다."
+    },
+    {
+      "id": "break-intro",
+      "title": "반복중단으로 반복 끝내기",
+      "text": "이번에는 count가 2가 되면 반복을 끝내 봅니다. 반복 안의 조건문 (If)에는 count == 2 조건이 이미 들어 있습니다. 그 안의 빈 영역에 반복중단을 넣으면, 조건이 참일 때 반복을 끝내고 반복 다음 명령으로 넘어갑니다. 다음을 누르세요.",
+      "docText": "**반복중단**은 반복 안에서 실행하면 반복을 끝내고 반복 다음 명령으로 넘어가는 명령입니다. 보통 조건문 안에 넣어 특정 조건에서만 반복을 끝내게 합니다. 예제의 조건문 (If)에는 `count == 2` 조건이 들어 있으므로, 그 안의 빈 영역에 반복중단을 넣으면 count가 2가 될 때 반복이 끝납니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (If)"
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "select-empty",
+      "title": "조건문 안의 빈 영역 고르기",
+      "text": "조건문 (If) 아래의 빈 영역을 눌러 반복중단을 넣을 위치를 선택하세요.",
+      "docText": "조건문 (If) 아래의 빈 영역을 눌러 반복중단을 넣을 위치를 선택합니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "빈 영역"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "pick-break",
+      "title": "반복중단 고르기",
+      "text": "편집 아이콘으로 명령어 목록을 열고(이미 열려 있으면 그대로), 공통 명령어에서 반복중단을 누르세요.",
+      "docText": "편집 아이콘으로 명령어 목록을 열고 공통 명령어의 반복중단을 누릅니다. 조건문 안에 반복중단이 추가됩니다.",
+      "target": {
+        "css": ".CommandListPanel button[data-slot=button]",
+        "text": "반복중단"
+      },
+      "also": [
+        {
+          "css": ".CommandListPanel"
+        }
+      ],
+      "open": [
+        {
+          "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+          "nth": 0
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeItem .command-text",
+            "text": "빈 영역"
+          },
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "break-added",
+      "title": "조건문 안의 반복중단",
+      "text": "조건문 (If) 안에 반복중단이 들어갔습니다. count가 2가 되면 이 명령이 실행되어 반복이 끝납니다. 실행해 확인합니다. 다음을 누르세요.",
+      "docText": "조건문 (If) 안에 반복중단이 들어갑니다. `count`가 2가 되면 이 명령이 실행되어 반복이 끝납니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "반복중단"
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "run-start-2",
+      "title": "프로그램 실행",
+      "text": "재생(▶) 버튼을 눌러 프로그램을 실행하세요.",
+      "docText": "재생(▶) 버튼을 눌러 프로그램을 실행합니다. 프로그램을 바꾼 뒤이므로 저장 확인 창이 나타납니다.",
+      "target": {
+        "css": ".ProgramControlBtns button",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "save-confirm-2",
+      "title": "저장 후 실행",
+      "text": "프로그램을 바꾼 뒤 실행하면 저장하고 실행할지 묻습니다. 저장을 누르세요.",
+      "docText": "프로그램을 바꾼 뒤 실행하면 **프로그램 변경 확인** 창이 나타나 저장 후 실행할지 묻습니다. **저장**을 누르면 저장하고 실행합니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "저장"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "break-dialog-1",
+      "title": "첫 번째 반복",
+      "text": "count가 1일 때는 If 조건이 거짓이라 반복이 계속됩니다. 디버그 창에 count: 1.0 이 보입니다. Resume을 누르세요.",
+      "docText": "`count`가 1일 때는 If 조건(`count == 2`)이 거짓이라 반복이 계속되고 `count: 1.0`이 표시됩니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "Resume"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "lift": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ]
+    },
+    {
+      "id": "break-dialog-2",
+      "title": "count가 2일 때",
+      "text": "count가 2가 되어 디버그 창에 count: 2.0 이 보입니다. Resume을 누르면 다음 명령인 조건문에서 count == 2 가 참이라 반복중단이 실행됩니다.",
+      "docText": "`count`가 2가 되면 `count: 2.0`이 표시됩니다. 이어서 조건문에서 `count == 2`가 참이라 반복중단이 실행됩니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "Resume"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "lift": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ]
+    },
+    {
+      "id": "break-finished",
+      "title": "반복중단으로 끝났습니다",
+      "text": "세 번째 디버그 창이 뜨지 않고 프로그램이 끝났습니다. While 조건 count < 3 은 아직 참이었지만 반복중단이 반복을 끝냈기 때문입니다. 다음을 누르세요.",
+      "docText": "세 번째 디버그 창은 나타나지 않고 프로그램이 끝납니다. While 조건(`count < 3`)이 아직 참이었지만 반복중단이 반복을 끝냈기 때문입니다.",
+      "target": {
+        "css": ".ProgramTreeBox"
+      },
+      "shot": "full"
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "반복중단을 조건문 안에 넣어, 조건이 참이 되면 While 조건과 관계없이 반복을 끝내는 것을 확인했습니다."
+    }
+  ]
+}

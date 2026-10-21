@@ -1,0 +1,36 @@
+{
+  "id": "move-menu-move-io",
+  "doc": "/manual/move-menu/move-io",
+  "title": "입/출력 살펴보기",
+  "route": "/muscat/app/move",
+  "restore": "snapshot",
+  "steps": [
+    {
+      "id": "open",
+      "title": "입/출력 열기",
+      "text": "오른쪽 메뉴에서 입/출력을(를) 누르세요.",
+      "target": {
+        "css": "[data-testid=menu-item-move-io]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "panel",
+      "title": "입/출력",
+      "text": "제어 박스·툴·확장 보드 탭으로 나뉘어 디지털·아날로그 입력과 출력의 현재 신호를 보여줍니다. 출력에는 목표 신호 입력과 미리보기 버튼이 있습니다.",
+      "target": {
+        "css": ".ManipulateIOControl"
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "입/출력 메뉴의 화면을 살펴봤습니다. 다시 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

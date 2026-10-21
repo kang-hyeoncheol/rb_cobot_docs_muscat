@@ -1,0 +1,208 @@
+{
+  "id": "move-menu-workspace-edit",
+  "doc": "/manual/move-menu/workspace",
+  "title": "도형 위치·크기 바꾸기",
+  "route": "/muscat/app/move",
+  "initialState": {
+    "workspace": "examples"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "열려 있는 워크스페이스(Welding cell)의 도형 하나를 골라 위치와 크기를 바꿔 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요."
+    },
+    {
+      "id": "open",
+      "title": "워크스페이스 열기",
+      "text": "오른쪽 메뉴의 워크스페이스를 누르세요.",
+      "docText": "동작 화면의 오른쪽 메뉴에서 워크스페이스를 열면 편집 패널이 표시됩니다.",
+      "target": {
+        "css": "[data-testid=menu-item-workspace]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "properties-intro",
+      "title": "오브젝트 속성",
+      "text": "도형을 선택하면 위치·회전·크기를 바꿀 수 있습니다. 위치와 크기는 mm, 회전은 ° 단위입니다. 다음 두 단계에서 위치와 크기를 따로 바꿔 봅니다.",
+      "docText": "선택한 도형의 오브젝트 속성에서 위치·회전·크기를 편집합니다. 위치와 크기는 mm, 회전은 ° 단위입니다.",
+      "target": {
+        "css": ".WorkspaceControl span",
+        "text": "오브젝트 속성",
+        "up": 2
+      },
+      "ensure": [
+        {
+          "when": {
+            "css": ".WorkspaceControl .AxisNumberInput"
+          },
+          "press": [
+            {
+              "css": ".WorkspaceControl [data-item-id]",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "move-object",
+      "title": "직접 해 보기 · 위치 변경",
+      "text": "위치의 X 입력칸을 누르고 500을 입력한 뒤 Set을 누르세요. 도형이 이동하는지 확인하세요.",
+      "docText": "위치 X에 500mm를 입력하고 Set으로 적용합니다. 도형의 X 위치가 변경되고 3D 화면에 반영됩니다.",
+      "target": {
+        "css": ".WorkspaceControl .AxisNumberInput",
+        "nth": 0
+      },
+      "free": true,
+      "open": [
+        {
+          "css": ".ManiRobotUrdfViewer canvas"
+        }
+      ],
+      "ensure": [
+        {
+          "when": {
+            "css": ".WorkspaceControl .AxisNumberInput"
+          },
+          "press": [
+            {
+              "css": ".WorkspaceControl [data-item-id]",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "hint": "이번 단계에서는 X 위치만 바꿔 보세요.",
+      "perform": [
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl .AxisNumberInput input",
+            "nth": 0
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "Del"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "5"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "0"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "0"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "Set"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resize-object",
+      "title": "직접 해 보기 · 크기 변경",
+      "text": "크기의 SX 입력칸을 누르고 300을 입력한 뒤 Set을 누르세요. X 방향 크기가 커지는지 확인하세요.",
+      "docText": "크기 SX에 300mm를 입력하고 Set으로 적용합니다. 도형의 X 방향 치수가 변경됩니다.",
+      "target": {
+        "css": ".WorkspaceControl .AxisNumberInput",
+        "nth": 6
+      },
+      "free": true,
+      "open": [
+        {
+          "css": ".ManiRobotUrdfViewer canvas"
+        }
+      ],
+      "ensure": [
+        {
+          "when": {
+            "css": ".WorkspaceControl .AxisNumberInput"
+          },
+          "press": [
+            {
+              "css": ".WorkspaceControl [data-item-id]",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "hint": "이번 단계에서는 SX 크기만 바꿔 보세요.",
+      "perform": [
+        {
+          "click": true,
+          "target": {
+            "css": ".WorkspaceControl .AxisNumberInput input",
+            "nth": 6
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "Del"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "3"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "0"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "0"
+          }
+        },
+        {
+          "click": true,
+          "target": {
+            "css": "[data-slot=number-keypad] button",
+            "text": "Set"
+          }
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "도형의 위치와 크기를 바꿨습니다. 위치와 크기는 mm, 회전은 ° 단위입니다. 다시 하기는 실습을 처음 상태로 초기화합니다."
+    }
+  ]
+}

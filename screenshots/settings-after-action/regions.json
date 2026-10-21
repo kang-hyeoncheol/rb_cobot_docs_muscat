@@ -1,0 +1,32 @@
+{
+ "pick-card": {
+  "w": 631,
+  "h": 340,
+  "dynamic": []
+ },
+ "panel": {
+  "w": 620,
+  "h": 900,
+  "dynamic": []
+ },
+ "open-select": {
+  "w": 620,
+  "h": 340,
+  "dynamic": []
+ },
+ "pick-script": {
+  "w": 620,
+  "h": 340,
+  "dynamic": []
+ },
+ "save": {
+  "w": 620,
+  "h": 340,
+  "dynamic": []
+ },
+ "result": {
+  "w": 631,
+  "h": 340,
+  "dynamic": []
+ }
+}

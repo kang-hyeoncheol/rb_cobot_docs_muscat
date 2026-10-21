@@ -1,0 +1,110 @@
+{
+  "id": "jog-robot-cartesian",
+  "doc": "/manual/jog-robot",
+  "title": {
+    "ko": "직교 좌표로 TCP 움직이기",
+    "en": "Move the TCP with Cartesian jog"
+  },
+  "route": "/muscat/app/dashboard",
+  "steps": [
+    {
+      "id": "intro",
+      "title": {
+        "ko": "실습을 시작합니다",
+        "en": "Start the practice"
+      },
+      "text": {
+        "ko": "TCP(툴 끝점)를 Global 좌표계 기준으로 직선·회전 이동시켜 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요.",
+        "en": "Move and rotate the TCP (tool center point) relative to the Global frame. The robot on this screen does not actually move. Follow the prompts and click the highlighted areas."
+      }
+    },
+    {
+      "id": "open-move",
+      "title": {
+        "ko": "동작 메뉴 열기",
+        "en": "Open the Move menu"
+      },
+      "text": {
+        "ko": "왼쪽 메뉴에서 동작을 눌러 로봇을 움직이는 화면으로 이동합니다.",
+        "en": "Click Move in the left menu to go to the screen where you move the robot."
+      },
+      "target": {
+        "css": "a[href=\"/muscat/app/move\"]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "select-global",
+      "title": {
+        "ko": "Global 탭 선택",
+        "en": "Select the Global tab"
+      },
+      "text": {
+        "ko": "TCP를 직선으로 움직여 봅니다. Global 탭을 누르세요. Global은 로봇 베이스 기준 좌표계입니다.",
+        "en": "Move the TCP in a straight line. Click the Global tab. Global is the coordinate frame based on the robot base."
+      },
+      "target": {
+        "css": "[data-slot=tabs-trigger]",
+        "text": "Global"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "jog-x",
+      "title": {
+        "ko": "X·Y·Z 방향으로 이동",
+        "en": "Move along X, Y and Z"
+      },
+      "text": {
+        "ko": "X, Y, Z와 RX·RY·RZ, AA의 + / − 버튼을 눌러 보세요. X·Y·Z는 누르는 방향으로 TCP가 직선 이동하고 다른 위치 값은 거의 그대로입니다. RX·RY·RZ는 베이스 좌표계의 해당 축을 중심으로 TCP를 회전시키므로, 현재 자세에 따라 누른 항목이 아닌 다른 각도 값이 함께 바뀔 수 있습니다. 팔이 닿을 수 없는 위치로는 더 나아가지 않고 멈춥니다. 충분히 해 본 뒤 다음을 누르세요.",
+        "en": "Try the + / − buttons of X, Y, Z, RX, RY, RZ and AA. X, Y and Z move the TCP in a straight line in the direction you press, and the other position values stay almost the same. RX, RY and RZ rotate the TCP about the matching axis of the base frame, so depending on the current pose, angle values other than the one you pressed may change as well. The arm stops instead of going further when the position is out of reach. Press Next when you have tried enough."
+      },
+      "docText": {
+        "ko": "X, Y, Z와 RX·RY·RZ, AA의 + / − 버튼을 눌러 보세요. X·Y·Z는 누르는 방향으로 TCP가 직선 이동하고 다른 위치 값은 거의 그대로입니다. RX·RY·RZ는 베이스 좌표계의 해당 축을 중심으로 TCP를 회전시키므로, 현재 자세에 따라 누른 항목이 아닌 다른 각도 값이 함께 바뀔 수 있습니다. 팔이 닿을 수 없는 위치로는 더 나아가지 않고 멈춥니다.",
+        "en": "Try the + / − buttons of X, Y, Z, RX, RY, RZ and AA. X, Y and Z move the TCP in a straight line in the direction you press, and the other position values stay almost the same. RX, RY and RZ rotate the TCP about the matching axis of the base frame, so depending on the current pose, angle values other than the one you pressed may change as well. The arm stops instead of going further when the position is out of reach."
+      },
+      "target": {
+        "css": "[data-slot=tabs-content]"
+      },
+      "open": [
+        {
+          "css": ".ManiRobotUrdfViewer canvas"
+        }
+      ],
+      "hint": {
+        "ko": "여러 축을 움직여 보세요. 3D 화면은 드래그로 회전하고 휠로 확대·축소할 수 있습니다.",
+        "en": "Try several axes. Drag the 3D view to rotate the camera and scroll to zoom."
+      },
+      "perform": [
+        {
+          "hold": 1000,
+          "target": {
+            "css": "[data-slot=side-number-input-increase]",
+            "nth": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": {
+        "ko": "실습 완료",
+        "en": "Practice complete"
+      },
+      "text": {
+        "ko": "Global 탭에서 TCP를 직선·회전 이동시켜 봤습니다. 처음부터 다시 해 보려면 다시 하기를 누르세요.",
+        "en": "You moved and rotated the TCP on the Global tab. Press Restart to try again from the beginning."
+      }
+    }
+  ]
+}

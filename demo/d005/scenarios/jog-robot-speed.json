@@ -1,0 +1,89 @@
+{
+  "id": "jog-robot-speed",
+  "doc": "/manual/jog-robot",
+  "title": {
+    "ko": "속도 비율과 긴급 정지 확인하기",
+    "en": "Check the speed ratio and emergency stop"
+  },
+  "route": "/muscat/app/dashboard",
+  "steps": [
+    {
+      "id": "intro",
+      "title": {
+        "ko": "실습을 시작합니다",
+        "en": "Start the practice"
+      },
+      "text": {
+        "ko": "조그를 쓰기 전에 확인할 두 가지, 속도 비율과 긴급 정지 위치를 알아봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요.",
+        "en": "Look at two things to check before you jog: the speed ratio and the location of the emergency stop. The robot on this screen does not actually move. Follow the prompts and click the highlighted areas."
+      }
+    },
+    {
+      "id": "open-move",
+      "title": {
+        "ko": "동작 메뉴 열기",
+        "en": "Open the Move menu"
+      },
+      "text": {
+        "ko": "왼쪽 메뉴에서 동작을 눌러 로봇을 움직이는 화면으로 이동합니다.",
+        "en": "Click Move in the left menu to go to the screen where you move the robot."
+      },
+      "target": {
+        "css": "a[href=\"/muscat/app/move\"]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "speed",
+      "title": {
+        "ko": "속도 비율 조절",
+        "en": "Adjust the speed ratio"
+      },
+      "text": {
+        "ko": "화면 아래쪽 슬라이더는 로봇 이동 속도의 비율(%)이며, 조그 속도에도 이 비율이 적용됩니다. 슬라이더를 움직여 값을 바꿔 보세요. 실제 로봇을 조작할 때는 처음에 낮게 두고 시작하세요.",
+        "en": "The slider at the bottom is the robot's speed ratio (%), and it also applies to jog speed. Move the slider to change the value. When operating a real robot, start with a low value."
+      },
+      "target": {
+        "css": ".SpeedRatioRangeBar"
+      },
+      "hint": {
+        "ko": "슬라이더를 움직여 보세요",
+        "en": "Move the slider"
+      }
+    },
+    {
+      "id": "emergency-stop",
+      "title": {
+        "ko": "긴급 정지 위치 기억하기",
+        "en": "Remember where the emergency stop is"
+      },
+      "text": {
+        "ko": "오른쪽 위의 긴급 정지 버튼은 어떤 화면에서든 항상 보입니다. 실제 로봇을 조작할 때는 위험 상황에서 바로 누를 수 있도록 위치를 먼저 확인하세요.",
+        "en": "The emergency stop button at the upper right is always visible on every screen. When operating a real robot, find it first so you can press it right away in a dangerous situation."
+      },
+      "target": {
+        "css": "button[data-slot=label-button]",
+        "text": {
+          "ko": "긴급 정지",
+          "en": "EMERGENCY STOP"
+        }
+      }
+    },
+    {
+      "id": "done",
+      "title": {
+        "ko": "실습 완료",
+        "en": "Practice complete"
+      },
+      "text": {
+        "ko": "속도 비율을 조절해 보고 긴급 정지 위치를 확인했습니다. 처음부터 다시 해 보려면 다시 하기를 누르세요.",
+        "en": "You adjusted the speed ratio and found the emergency stop. Press Restart to try again from the beginning."
+      }
+    }
+  ]
+}

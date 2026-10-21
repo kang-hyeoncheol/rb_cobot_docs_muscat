@@ -1,0 +1,505 @@
+{
+  "id": "program-if-condition",
+  "doc": "/manual/program/if",
+  "title": "조건문 조건 설정",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "funcName": "rb_program_sdk.set_variables",
+            "summary": "NUMERIC: count=2",
+            "args": {
+              "variables": [
+                {
+                  "type": "NUMERIC",
+                  "name": "count",
+                  "init_value": 2
+                }
+              ]
+            }
+          },
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "funcName": "rb_program_sdk.set_variables",
+            "summary": "NUMERIC: result=0",
+            "args": {
+              "variables": [
+                {
+                  "type": "NUMERIC",
+                  "name": "result",
+                  "init_value": 0
+                }
+              ]
+            }
+          },
+          {
+            "method": "Condition",
+            "name": "program.button.condition",
+            "summary": "",
+            "args": {
+              "condition": "",
+              "condition_type": "If"
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "funcName": "rb_program_sdk.make_script",
+                "summary": "result = 1",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "result = 1"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              }
+            ],
+            "extra": {
+              "groupId": "g1",
+              "groupFirstItem": true,
+              "requireChildren": true
+            }
+          },
+          {
+            "method": "Condition",
+            "name": "program.button.elif",
+            "summary": "",
+            "args": {
+              "condition": "",
+              "condition_type": "ElseIf"
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "funcName": "rb_program_sdk.make_script",
+                "summary": "result = 2",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "result = 2"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              }
+            ],
+            "extra": {
+              "groupId": "g1",
+              "disableCopy": true
+            }
+          },
+          {
+            "method": "Condition",
+            "name": "program.button.else",
+            "summary": "",
+            "args": {
+              "condition": "",
+              "condition_type": "Else"
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "funcName": "rb_program_sdk.make_script",
+                "summary": "result = 3",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "result = 3"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              }
+            ],
+            "extra": {
+              "groupId": "g1",
+              "disableCopy": true,
+              "groupLastItem": true
+            }
+          },
+          {
+            "method": "Debug",
+            "name": "program.button.debug",
+            "funcName": "rb_program_sdk.debug_variables",
+            "summary": "count, result",
+            "args": {
+              "option": "DIALOG",
+              "is_only_at_ui": false,
+              "variables": [
+                "count",
+                "result"
+              ],
+              "pause_option": "ALL"
+            }
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "조건문을 알아봅니다",
+      "text": "조건문은 조건이 참인지 거짓인지에 따라 실행할 명령을 나눕니다. 이 실습에서는 If와 Else If의 조건을 직접 입력하고 저장합니다. 이 화면의 로봇은 실제로 움직이지 않습니다."
+    },
+    {
+      "id": "tree",
+      "title": "프로그램 살펴보기",
+      "text": "count는 2입니다. 조건문은 If → Else If → Else 세 분기로 이루어지고, 각 분기는 result를 1, 2, 3으로 만듭니다. If와 Else If의 조건은 아직 비어 있습니다. 마지막 디버그가 count와 result를 보여 줍니다. 다음을 누르세요.",
+      "docText": "예제 프로그램은 `count`를 2로 두고, 조건문의 세 분기(If → Else If → Else)가 `result`를 각각 1, 2, 3으로 만듭니다. If와 Else If의 조건은 아직 비어 있고, 마지막 디버그가 `count`와 `result`를 보여 줍니다.",
+      "target": {
+        "css": ".ProgramTreeBox"
+      },
+      "shot": "full"
+    },
+    {
+      "id": "open-edit",
+      "title": "편집 아이콘 누르기",
+      "text": "트리 위쪽의 편집 아이콘을 눌러 편집 화면을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 편집 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "select-item",
+      "title": "조건문 (If) 선택",
+      "text": "트리에서 조건문 (If)을 눌러 선택하세요.",
+      "docText": "트리에서 조건문 (If)을 누르면 선택됩니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (If)"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "open-form",
+      "title": "조건문 (If) 설정 화면 열기",
+      "text": "선택된 조건문 (If)을 한 번 더 눌러 설정 화면을 여세요.",
+      "docText": "선택된 조건문 (If)을 한 번 더 누르면 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (If)"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "form-intro",
+      "title": "조건문 설정 화면",
+      "text": "위쪽 상태 설정에서 조건을 입력하고, 아래 상태 추가에서 Else If와 Else 분기를 더합니다. Else If는 앞의 조건이 거짓일 때 확인할 다른 조건을, Else는 앞의 조건이 모두 거짓일 때 실행할 분기를 만듭니다. 이 프로그램에는 두 분기가 이미 만들어져 있습니다. 다음을 누르세요.",
+      "docText": "조건문 설정 화면은 두 영역으로 나뉩니다. 상태 설정에서 조건을 입력하고, 상태 추가에서 조건문 (Else If)·조건문 (Else) 분기를 추가합니다.",
+      "target": {
+        "css": ".IfForm .CommandMiddleSectionTemplate",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".IfForm .CommandMiddleSectionTemplate",
+          "nth": 1
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (If)",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-if",
+      "title": "If 조건 입력",
+      "text": "If의 조건에 count == 0 을 입력하세요. count가 0과 같으면 이 분기를 실행한다는 뜻입니다. 공백은 있어도 괜찮고, 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "If의 조건에 분기를 실행할 조건을 입력합니다. 예에서는 `count == 0`을 입력합니다.",
+      "target": {
+        "css": ".IfForm [data-slot=text-field]"
+      },
+      "requireValue": {
+        "target": {
+          "css": ".IfForm input[name=ifCondition]"
+        },
+        "equals": "count == 0"
+      },
+      "hint": "안내된 값을 입력하세요: count == 0",
+      "perform": [
+        {
+          "type": "count == 0",
+          "target": {
+            "css": ".IfForm input[name=ifCondition]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (If)",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-if",
+      "title": "저장",
+      "text": "저장을 눌러 If 조건을 적용하세요.",
+      "docText": "저장을 누르면 If 조건이 적용됩니다.",
+      "target": {
+        "css": ".IfForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (If)",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".IfForm input[name=ifCondition]"
+        },
+        "value": "count == 0"
+      }
+    },
+    {
+      "id": "select-elseif",
+      "title": "Else If 선택",
+      "text": "이제 Else If의 조건을 정합니다. 트리에서 조건문 (Else if)를 눌러 선택하세요.",
+      "docText": "Else If 분기의 조건도 같은 방법으로 정합니다. 트리에서 조건문 (Else if)를 눌러 선택합니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (Else if)"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "open-elseif",
+      "title": "Else If 설정 화면 열기",
+      "text": "선택된 조건문 (Else if)를 한 번 더 눌러 설정 화면을 여세요.",
+      "docText": "선택된 조건문 (Else if)를 한 번 더 누르면 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (Else if)"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "type-elseif",
+      "title": "Else If 조건 입력",
+      "text": "Else If의 조건에 count > 0 을 입력하세요. If가 거짓일 때만 확인하는 조건입니다.",
+      "docText": "Else If의 조건을 입력합니다. 앞의 If 조건이 거짓일 때만 확인하며, 예에서는 `count > 0`을 입력합니다.",
+      "target": {
+        "css": ".IfForm [data-slot=text-field]"
+      },
+      "requireValue": {
+        "target": {
+          "css": ".IfForm input[name=ifCondition]"
+        },
+        "equals": "count > 0"
+      },
+      "hint": "안내된 값을 입력하세요: count > 0",
+      "perform": [
+        {
+          "type": "count > 0",
+          "target": {
+            "css": ".IfForm input[name=ifCondition]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (Else if)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-elseif",
+      "title": "저장",
+      "text": "저장을 눌러 Else If 조건을 적용하세요.",
+      "docText": "저장을 누르면 Else If 조건이 적용됩니다.",
+      "target": {
+        "css": ".IfForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (Else if)"
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".IfForm input[name=ifCondition]"
+        },
+        "value": "count > 0"
+      }
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "If와 Else If의 조건을 입력하고 저장했습니다. 저장한 조건은 트리의 조건문 옆에 표시됩니다."
+    }
+  ]
+}

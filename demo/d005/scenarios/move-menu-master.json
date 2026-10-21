@@ -1,0 +1,36 @@
+{
+  "id": "move-menu-master",
+  "doc": "/manual/move-menu/master",
+  "title": "Master Mode 살펴보기",
+  "route": "/muscat/app/move",
+  "restore": "snapshot",
+  "steps": [
+    {
+      "id": "open",
+      "title": "Master Mode 열기",
+      "text": "오른쪽 메뉴에서 Master Mode을(를) 누르세요.",
+      "target": {
+        "css": "[data-testid=menu-item-master]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "panel",
+      "title": "Master Mode",
+      "text": "Master Move J와 Master Move L은 마스터 로봇의 움직임을 다른 로봇이 따라 하게 하는 모드이고, Master Mode Stop은 끝내는 버튼입니다. J는 관절 각도를, L은 TCP 위치·방향 관계를 기준으로 따라갑니다. 이 가상 로봇은 한 대뿐이라 화면 구성만 볼 수 있습니다.",
+      "target": {
+        "css": ".ManipulateMasterControl"
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "Master Mode 메뉴의 화면을 살펴봤습니다. 다시 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

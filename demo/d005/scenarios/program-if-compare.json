@@ -1,0 +1,414 @@
+{
+  "id": "program-if-compare",
+  "doc": "/manual/program/if",
+  "title": "조건 바꿔 비교하기",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "summary": "NUMERIC: count=2",
+            "funcName": "rb_program_sdk.set_variables",
+            "args": {
+              "variables": [
+                {
+                  "type": "NUMERIC",
+                  "name": "count",
+                  "init_value": 2
+                }
+              ]
+            }
+          },
+          {
+            "method": "Variables",
+            "name": "program.button.variables",
+            "summary": "NUMERIC: result=0",
+            "funcName": "rb_program_sdk.set_variables",
+            "args": {
+              "variables": [
+                {
+                  "type": "NUMERIC",
+                  "name": "result",
+                  "init_value": 0
+                }
+              ]
+            }
+          },
+          {
+            "method": "Condition",
+            "name": "program.button.condition",
+            "summary": "count == 0",
+            "args": {
+              "condition": "count == 0",
+              "condition_type": "If"
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "summary": "result = 1",
+                "funcName": "rb_program_sdk.make_script",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "result = 1"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              }
+            ],
+            "extra": {
+              "groupId": "g1",
+              "groupFirstItem": true,
+              "requireChildren": true
+            }
+          },
+          {
+            "method": "Condition",
+            "name": "program.button.elif",
+            "summary": "count > 0",
+            "args": {
+              "condition": "count > 0",
+              "condition_type": "ElseIf"
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "summary": "result = 2",
+                "funcName": "rb_program_sdk.make_script",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "result = 2"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              }
+            ],
+            "extra": {
+              "groupId": "g1",
+              "disableCopy": true
+            }
+          },
+          {
+            "method": "Condition",
+            "name": "program.button.else",
+            "summary": "",
+            "args": {
+              "condition": "",
+              "condition_type": "Else"
+            },
+            "children": [
+              {
+                "method": "Script",
+                "name": "program.button.script",
+                "summary": "result = 3",
+                "funcName": "rb_program_sdk.make_script",
+                "args": {
+                  "mode": "GENERAL",
+                  "general_contents": [
+                    "result = 3"
+                  ]
+                },
+                "extra": {
+                  "notAstEval": true
+                }
+              }
+            ],
+            "extra": {
+              "groupId": "g1",
+              "disableCopy": true,
+              "groupLastItem": true
+            }
+          },
+          {
+            "method": "Debug",
+            "name": "program.button.debug",
+            "summary": "count, result",
+            "funcName": "rb_program_sdk.debug_variables",
+            "args": {
+              "option": "DIALOG",
+              "is_only_at_ui": false,
+              "variables": [
+                "count",
+                "result"
+              ],
+              "pause_option": "ALL"
+            }
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "조건을 바꿔 비교하기",
+      "text": "If 조건을 count == 2 로 바꿔 실행하고, 앞의 조건이 참일 때 어느 분기가 실행되는지 비교합니다. 이 화면의 로봇은 실제로 움직이지 않습니다."
+    },
+    {
+      "id": "exp-intro",
+      "title": "조건을 바꿔 실행하기",
+      "text": "이번에는 If 조건을 count == 2 로 바꿔 봅니다. count가 2이면 If와 Else If(count > 0)가 모두 참이 되는데, 어느 분기가 실행되는지 확인합니다. 다음을 누르세요.",
+      "docText": "If 조건을 `count == 2`로 바꾸면 `count`가 2일 때 If와 Else If(`count > 0`)가 모두 참이 됩니다. 이때 어느 분기가 실행되는지 확인합니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (If)",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "open-edit-2",
+      "title": "편집 아이콘 누르기",
+      "text": "트리 위쪽의 편집 아이콘을 눌러 편집 화면을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 편집 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "select-item-2",
+      "title": "조건문 (If) 선택",
+      "text": "트리에서 조건문 (If)을 눌러 선택하세요.",
+      "docText": "트리에서 조건문 (If)을 누르면 선택됩니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (If)"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "open-form-2",
+      "title": "조건문 (If) 설정 화면 열기",
+      "text": "선택된 조건문 (If)을 한 번 더 눌러 설정 화면을 여세요.",
+      "docText": "선택된 조건문 (If)을 한 번 더 누르면 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "조건문 (If)"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "type-if-2",
+      "title": "If 조건 바꾸기",
+      "text": "If의 조건을 지우고 count == 2 를 입력하세요. 입력칸 오른쪽의 ✕를 누르면 기존 값을 지울 수 있습니다.",
+      "docText": "If의 조건을 `count == 2`로 바꿉니다. 입력칸 오른쪽의 ✕로 기존 값을 지운 뒤 입력합니다.",
+      "target": {
+        "css": ".IfForm [data-slot=text-field]"
+      },
+      "requireValue": {
+        "target": {
+          "css": ".IfForm input[name=ifCondition]"
+        },
+        "equals": "count == 2"
+      },
+      "hint": "안내된 값을 입력하세요: count == 2",
+      "perform": [
+        {
+          "type": "count == 2",
+          "target": {
+            "css": ".IfForm input[name=ifCondition]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (If)",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-if-2",
+      "title": "저장",
+      "text": "저장을 눌러 조건을 적용하세요.",
+      "docText": "저장을 누르면 바뀐 조건이 적용됩니다.",
+      "target": {
+        "css": ".IfForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".IfForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "조건문 (If)",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".IfForm input[name=ifCondition]"
+        },
+        "value": "count == 2",
+        "replaceIf": "count == 0"
+      }
+    },
+    {
+      "id": "run-start-2",
+      "title": "프로그램 실행",
+      "text": "재생(▶) 버튼을 눌러 프로그램을 실행하세요.",
+      "docText": "재생(▶) 버튼을 눌러 프로그램을 실행합니다. 프로그램을 바꾼 뒤이므로 저장 확인 창이 나타납니다.",
+      "target": {
+        "css": ".ProgramControlBtns button",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "save-confirm-2",
+      "title": "저장 후 실행",
+      "text": "프로그램을 바꾼 뒤 실행하면 저장하고 실행할지 묻습니다. 저장을 누르세요.",
+      "docText": "프로그램을 바꾼 뒤 실행하면 **프로그램 변경 확인** 창이 나타나 저장 후 실행할지 묻습니다. **저장**을 누르면 저장하고 실행합니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "저장"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "debug-dialog-2",
+      "title": "처음 참인 분기만 실행",
+      "text": "result가 1.0 입니다. count가 2라 If(count == 2)와 Else If(count > 0)가 모두 참이지만, 위에서부터 확인해 처음으로 참인 If만 실행하고 나머지는 건너뛰었습니다. Resume을 눌러 끝내세요.",
+      "docText": "`result`가 1이 됩니다. `count`가 2라 If(`count == 2`)와 Else If(`count > 0`)가 모두 참이지만, 위에서부터 확인해 **처음으로 참인 분기 하나만** 실행하고 나머지는 건너뜁니다.",
+      "target": {
+        "css": "[role=dialog] button",
+        "text": "Resume"
+      },
+      "also": [
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "lift": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "If 조건을 바꿔 실행하면 If와 Else If가 모두 참이어도 처음 참인 분기 하나만 실행되는 것을 확인했습니다."
+    }
+  ]
+}

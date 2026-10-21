@@ -1,0 +1,62 @@
+{
+  "id": "move-menu-workspace-free",
+  "doc": "/manual/move-menu/workspace",
+  "title": "워크스페이스 자유 실습",
+  "route": "/muscat/app/move",
+  "initialState": {
+    "workspace": "examples"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "열려 있는 워크스페이스(Welding cell)에서 배운 기능을 마음대로 써 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요."
+    },
+    {
+      "id": "open",
+      "title": "워크스페이스 열기",
+      "text": "오른쪽 메뉴의 워크스페이스를 누르세요.",
+      "docText": "동작 화면의 오른쪽 메뉴에서 워크스페이스를 열면 편집 패널이 표시됩니다.",
+      "target": {
+        "css": "[data-testid=menu-item-workspace]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "free-practice",
+      "title": "자유 실습",
+      "text": "도형 추가·위치와 크기 편집·목록 관리·저장·불러오기를 자유롭게 해 보세요. 필요한 만큼 연습한 뒤 다음을 누르세요.",
+      "docText": "워크스페이스 패널에서 도형 추가·속성 편집·목록 관리·저장을 자유롭게 연습합니다. 작업대와 원기둥을 만드는 예제로 기능을 함께 사용할 수 있습니다.",
+      "target": {
+        "css": ".WorkspaceControl"
+      },
+      "free": true,
+      "open": [
+        {
+          "css": ".ManiRobotUrdfViewer canvas"
+        },
+        {
+          "css": "[role=dialog]"
+        },
+        {
+          "css": "[role=alertdialog]"
+        },
+        {
+          "css": "[role=menu]"
+        }
+      ],
+      "hint": "다른 워크스페이스를 불러오거나 새로 만들어도 됩니다.",
+      "ensure": []
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "워크스페이스의 주요 기능을 자유롭게 써 봤습니다. 다시 하기는 실습을 처음 상태로 초기화합니다."
+    }
+  ]
+}

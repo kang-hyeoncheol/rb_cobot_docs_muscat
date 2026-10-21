@@ -1,0 +1,654 @@
+{
+  "id": "program-force-control",
+  "doc": "/manual/program/force-control",
+  "title": "힘 제어 추가하기",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Empty",
+            "name": "program.button.empty"
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "프로그램에 힘 제어를 넣어, 로봇이 정한 방향으로 정한 힘을 유지하도록 설정해 봅니다.\n\n• 힘 제어를 켜는 명령을 만들고 방향·목표 힘을 정해 봅니다.\n• 이 화면의 로봇은 실제로 움직이지 않습니다."
+    },
+    {
+      "id": "pick-empty",
+      "title": "넣을 위치 고르기",
+      "text": "트리의 빈 영역을 눌러 명령을 넣을 위치를 선택하세요.",
+      "docText": "프로그램 트리에서 명령을 넣을 위치의 빈 영역을 누릅니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "빈 영역"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "open-add",
+      "title": "명령어 목록 열기",
+      "text": "편집 아이콘을 눌러 명령어 목록을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 명령어 목록이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "pick-cmd",
+      "title": "힘 제어 고르기",
+      "text": "매니퓰레이트 명령어에서 힘 제어를 누르세요.",
+      "docText": "매니퓰레이트 명령어에서 힘 제어를 누릅니다. 트리에 힘 제어가 추가됩니다.",
+      "target": {
+        "css": ".CommandListPanel button[data-slot=button]",
+        "text": "힘 제어"
+      },
+      "also": [
+        {
+          "css": ".CommandListPanel"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeItem .command-text",
+            "text": "빈 영역"
+          },
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "tree-result",
+      "title": "트리에 추가된 힘 제어",
+      "text": "트리에 힘 제어가 추가되었습니다.\n\n• 처음 모드는 끄기입니다.\n\n다음을 누르세요.",
+      "docText": "트리에 힘 제어가 추가됩니다. 처음 모드는 끄기입니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "힘 제어"
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "open-form",
+      "title": "힘 제어 열기",
+      "text": "트리에서 힘 제어를 눌러 설정 화면을 엽니다.",
+      "docText": "트리에서 힘 제어를 누르면 오른쪽에 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "힘 제어"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".CommandListPanel"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "form-intro",
+      "title": "힘 제어 설정 화면",
+      "text": "모드 선택에서 끄기·켜기·힘 설정값 변경 중 하나를 고릅니다.\n\n• 끄기는 추가로 정할 값이 없습니다.\n• 켜기와 힘 설정값 변경은 방향별 목표 힘 등을 정합니다.\n\n다음을 누르세요.",
+      "docText": "모드 선택에서 끄기, 켜기, 힘 설정값 변경 중 하나를 고릅니다. 끄기는 추가로 정할 값이 없고, 켜기와 힘 설정값 변경은 방향별 목표 힘 등을 정합니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+        "nth": 0
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mode-open",
+      "title": "모드 목록 열기",
+      "text": "모드 선택 상자를 눌러 목록을 엽니다.",
+      "docText": "모드 선택 상자를 누르면 끄기, 켜기, 힘 설정값 변경 목록이 열립니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+          "nth": 0
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mode-pick",
+      "title": "켜기 고르기",
+      "text": "켜기를 누르세요.",
+      "docText": "목록에서 켜기를 누르면 목표 설정, 제한 설정, 센서 설정, 기타 영역이 나타납니다.",
+      "target": {
+        "css": "[data-slot=select-option-text]",
+        "text": "켜기"
+      },
+      "also": [
+        {
+          "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+          "nth": 0
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": "[data-slot=select-option-text]",
+            "text": "켜기"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "target-intro",
+      "title": "목표 설정",
+      "text": "목표 설정에서 힘을 줄 기준 좌표계를 고르고, 축(X·Y·Z·Rx·Ry·Rz)마다 값을 정합니다.\n\n• 정하는 값은 활성화 여부, 목표값, P-Gain, I-Gain, 속도 제한입니다.\n• 활성화한 축만 힘 제어를 적용합니다.\n\n다음을 누르세요.",
+      "docText": "목표 설정에서는 힘을 줄 기준 좌표계를 고르고, 축(X·Y·Z·Rx·Ry·Rz)마다 활성화, 목표값, P-Gain, I-Gain, 속도 제한을 정합니다. 활성화한 축만 힘 제어가 적용됩니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+        "nth": 1
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "켜기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enable-z",
+      "title": "Z축 활성화",
+      "text": "Z 줄의 활성화 체크 상자를 눌러 체크하세요.",
+      "docText": "Z 줄의 활성화 체크 상자를 눌러 Z축의 힘 제어를 활성화합니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label]",
+        "nth": 2
+      },
+      "also": [
+        {
+          "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+          "nth": 1
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "켜기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-target",
+      "title": "목표값 입력",
+      "text": "Z 줄의 목표값에 10 을 입력하세요.\n\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "Z 줄의 목표값에 Z축 방향으로 유지할 힘을 입력합니다. 예에서는 10 을 입력합니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm [data-slot=text-input]:has(input[name=target_z])"
+      },
+      "also": [
+        {
+          "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+          "nth": 1
+        }
+      ],
+      "hint": "안내된 값을 입력하세요: 10",
+      "perform": [
+        {
+          "type": "10",
+          "target": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "켜기"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label] input:checked"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label]",
+              "nth": 2
+            }
+          ]
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".ManiForceControlCommandForm input[name=target_z]"
+        },
+        "equals": "10"
+      }
+    },
+    {
+      "id": "target-result",
+      "title": "정한 값 확인",
+      "text": "Z축을 활성화하고 목표값을 10으로 정했습니다.\n\n• 활성화한 Z축에만 힘 제어가 적용되고, 활성화하지 않은 축은 적용되지 않습니다.\n• 저장하기 전에는 적용되지 않습니다.\n\n다음을 누르세요.",
+      "docText": "Z축을 활성화하고 목표값을 10으로 정하면 활성화한 Z축에만 힘 제어가 적용되고, 활성화하지 않은 축은 적용되지 않습니다. 저장하기 전에는 적용되지 않습니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label]",
+        "nth": 2
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "켜기"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label] input:checked"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label]",
+              "nth": 2
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".ManiForceControlCommandForm input[name=target_z]"
+        },
+        "value": "10",
+        "replaceIf": "0"
+      }
+    },
+    {
+      "id": "other-intro",
+      "title": "제한·센서·기타 설정",
+      "text": "아래의 나머지 설정 영역입니다.\n\n• 제한 설정: 위치·회전 최대 편차\n• 센서 설정: 센서 타입·필터(Hz)·신호 옵션\n• 기타: 접촉 감지 힘(N)\n• 이 실습에서는 기본값을 그대로 씁니다.\n\n다음을 누르세요.",
+      "docText": "제한 설정에서는 위치 최대 편차(mm)와 회전 최대 편차(deg)를, 센서 설정에서는 센서 타입·센서 필터(Hz)·센서 신호 옵션을, 기타에서는 접촉 감지 힘(N)을 정합니다. 센서 설정과 기타는 켜기 모드에만 있습니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+        "nth": 2
+      },
+      "also": [
+        {
+          "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+          "nth": 3
+        },
+        {
+          "css": ".ManiForceControlCommandForm .CommandMiddleSectionTemplate",
+          "nth": 4
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "켜기"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label] input:checked"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label]",
+              "nth": 2
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".ManiForceControlCommandForm input[name=target_z]"
+        },
+        "value": "10",
+        "replaceIf": "0"
+      }
+    },
+    {
+      "id": "save-force",
+      "title": "힘 제어 저장",
+      "text": "저장을 눌러 적용하세요.",
+      "docText": "저장을 누르면 설정이 적용되고 설정 화면이 닫힙니다. 트리의 힘 제어 옆에 기준 좌표계와 모드가 표시됩니다.",
+      "target": {
+        "css": ".ManiForceControlCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "힘 제어"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm input[name=target_z]"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm [data-slot=select-box]",
+              "nth": 0
+            },
+            {
+              "css": "[data-slot=select-option-text]",
+              "text": "켜기"
+            }
+          ]
+        },
+        {
+          "when": {
+            "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label] input:checked"
+          },
+          "press": [
+            {
+              "css": ".ManiForceControlCommandForm label[data-slot=checkbox-label]",
+              "nth": 2
+            }
+          ]
+        }
+      ],
+      "fill": {
+        "target": {
+          "css": ".ManiForceControlCommandForm input[name=target_z]"
+        },
+        "value": "10",
+        "replaceIf": "0"
+      }
+    },
+    {
+      "id": "result",
+      "title": "저장된 힘 제어 확인",
+      "text": "트리의 힘 제어 옆에 기준 좌표계와 모드(켜기)가 표시됩니다.\n\n• 프로그램을 실행하면 이 지점에서 힘 제어가 켜지고, 끌 때는 힘 제어를 끄기 모드로 다시 넣습니다.\n\n다음을 누르세요.",
+      "docText": "트리의 힘 제어 옆에 기준 좌표계와 모드가 표시됩니다. 프로그램을 실행하면 이 지점에서 힘 제어가 켜지고, 끄려면 끄기 모드의 힘 제어를 다시 넣습니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "힘 제어"
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "힘 제어를 켜고 Z축의 목표 힘을 정해 보았습니다."
+    }
+  ]
+}

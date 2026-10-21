@@ -1,0 +1,472 @@
+{
+  "id": "program-move-jb-points",
+  "doc": "/manual/program/move-jb",
+  "title": "동작 JB 여러 포인트 구성",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Wait",
+            "name": "program.button.wait",
+            "summary": "1s",
+            "funcName": "rb_program_sdk.wait",
+            "args": {
+              "second": 1
+            }
+          },
+          {
+            "method": "MoveJB",
+            "name": "program.button.movejb",
+            "summary": "",
+            "funcName": "rb_manipulate_sdk.move.call_move_jb_clr",
+            "args": {
+              "robot_model": "C500920",
+              "move_type": "JB",
+              "orientation": null,
+              "running_mode": null
+            },
+            "children": [
+              {
+                "method": "Point",
+                "name": "program.button.point",
+                "summary": "Absolute , 0.000, 0.000, 0.000, 90.000, 0.000, 90.000, 0.000",
+                "funcName": "rb_manipulate_sdk.point.set_point",
+                "args": {
+                  "robot_model": "$parent.robot_model",
+                  "move_type": "$parent.move_type",
+                  "input_method": 0,
+                  "pnt_para": 100,
+                  "pnt_type": 0,
+                  "tar_frame": -1,
+                  "tar_unit": 0,
+                  "tar_values": [
+                    0,
+                    0,
+                    0,
+                    90,
+                    0,
+                    90,
+                    0
+                  ],
+                  "spd_mode": 0,
+                  "spd_vel_para": 0.4,
+                  "spd_acc_para": 0.1,
+                  "tcp_num": -1,
+                  "orientation": "$parent.orientation",
+                  "running_mode": "$parent.running_mode",
+                  "method": 0
+                },
+                "extra": {
+                  "allowParents": [
+                    "MoveJ",
+                    "MoveL",
+                    "MoveJB",
+                    "MoveLB",
+                    "MoveXB"
+                  ],
+                  "requireParent": true
+                }
+              },
+              {
+                "method": "Point",
+                "name": "program.button.point",
+                "summary": "Absolute, 45.000, 0.000, 0.000, 90.000, 0.000, 90.000, 0.000",
+                "funcName": "rb_manipulate_sdk.point.set_point",
+                "args": {
+                  "robot_model": "$parent.robot_model",
+                  "move_type": "$parent.move_type",
+                  "input_method": 0,
+                  "pnt_para": 50,
+                  "pnt_type": 0,
+                  "tar_frame": -1,
+                  "tar_unit": 0,
+                  "tar_values": [
+                    45,
+                    0,
+                    0,
+                    90,
+                    0,
+                    90,
+                    0
+                  ],
+                  "spd_mode": 0,
+                  "spd_vel_para": 0.4,
+                  "spd_acc_para": 0.1,
+                  "tcp_num": -1,
+                  "orientation": "$parent.orientation",
+                  "running_mode": "$parent.running_mode",
+                  "method": 0,
+                  "tar_frame_reference_point": null,
+                  "is_ext_axis": false,
+                  "variable_name": "",
+                  "point_name": ""
+                },
+                "extra": {
+                  "allowParents": [
+                    "MoveJ",
+                    "MoveL",
+                    "MoveJB",
+                    "MoveLB",
+                    "MoveXB"
+                  ],
+                  "requireParent": true,
+                  "memo": ""
+                }
+              }
+            ],
+            "extra": {
+              "postFuncName": "rb_manipulate_sdk.move.call_move_jb_run",
+              "allowChildren": [
+                "Point"
+              ],
+              "requireChildren": true
+            }
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program",
+    "speedBar": 1
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "동작 JB 여러 포인트 구성",
+      "text": "포인트가 두 개 있는 동작 JB에 포인트를 더해 로봇이 크게 움직이게 만들어 봅니다. 이 화면의 로봇은 가상이라 실제 로봇은 움직이지 않습니다."
+    },
+    {
+      "id": "open-jb-3",
+      "title": "동작 JB 열기",
+      "text": "포인트를 더 더해 로봇이 크게 움직이게 만들어 봅니다.\n\n• 트리에서 동작 JB를 눌러 설정 화면을 여세요.",
+      "docText": "트리에서 동작 JB를 누르면 오른쪽에 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "동작 JB"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".CommandListPanel"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add-point-3",
+      "title": "포인트 추가 (3번째)",
+      "text": "포인트 추가를 눌러 3번째 포인트를 더하세요.\n\n• 새 포인트의 설정 화면이 열리고, 목표 포인트는 로봇의 현재 자세로 채워져 있습니다.",
+      "docText": "포인트 추가를 누르면 동작 JB 아래에 새 포인트가 더해지고 그 포인트의 설정 화면이 열립니다. 목표 포인트는 로봇의 현재 자세로 채워집니다.",
+      "target": {
+        "css": ".ManiMoveCommandForm [data-slot=label-button]",
+        "text": "포인트 추가"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiMoveCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "동작 JB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-target-3",
+      "title": "3번째 포인트 값 입력",
+      "text": "목표 포인트의 J3 에 45 를 입력하세요.\n\n• J3 을 45° 로 정하면 팔꿈치 쪽이 접히며 로봇이 위로 들립니다.\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "목표 포인트의 J3에 각도를 입력합니다. 예에서는 J3을 45로 정해 앞의 포인트와 다른 자세로 움직이게 합니다.",
+      "target": {
+        "css": ".ManiPointCommandForm [data-slot=text-input]:has(input:not([name]))",
+        "nth": 3
+      },
+      "hint": "안내된 값을 입력하세요: 45",
+      "perform": [
+        {
+          "type": "45",
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 3
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 2
+            }
+          ]
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".ManiPointCommandForm input:not([name])",
+          "nth": 3
+        },
+        "equals": "45"
+      }
+    },
+    {
+      "id": "save-point-3",
+      "title": "3번째 포인트 저장",
+      "text": "저장을 눌러 포인트를 적용하세요.",
+      "docText": "저장을 누르면 포인트가 적용되고 설정 화면이 닫힙니다. 트리에 포인트가 하나 더 표시됩니다.",
+      "target": {
+        "css": ".ManiPointCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 2
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 3
+          },
+          "value": "45.000",
+          "replaceIf": "90.000"
+        }
+      ]
+    },
+    {
+      "id": "open-jb-4",
+      "title": "동작 JB 열기",
+      "text": "한 번 더 포인트를 더합니다.\n\n• 트리에서 동작 JB를 눌러 설정 화면을 여세요.",
+      "docText": "트리에서 동작 JB를 누르면 오른쪽에 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "동작 JB"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".CommandListPanel"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add-point-4",
+      "title": "포인트 추가 (4번째)",
+      "text": "포인트 추가를 눌러 4번째 포인트를 더하세요.\n\n• 새 포인트의 설정 화면이 열리고, 목표 포인트는 로봇의 현재 자세로 채워져 있습니다.",
+      "docText": "포인트 추가를 누르면 동작 JB 아래에 새 포인트가 더해지고 그 포인트의 설정 화면이 열립니다. 목표 포인트는 로봇의 현재 자세로 채워집니다.",
+      "target": {
+        "css": ".ManiMoveCommandForm [data-slot=label-button]",
+        "text": "포인트 추가"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiMoveCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "동작 JB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-target-4",
+      "title": "4번째 포인트 값 입력",
+      "text": "목표 포인트의 J0 에 -45 를 입력하세요.\n\n• J0 을 -45° 로 정하면 로봇이 처음 포인트와 반대쪽으로 돌아갑니다.\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "목표 포인트의 J0에 각도를 입력합니다. 예에서는 J0을 -45로 정해 앞의 포인트와 다른 자세로 움직이게 합니다.",
+      "target": {
+        "css": ".ManiPointCommandForm [data-slot=text-input]:has(input:not([name]))",
+        "nth": 0
+      },
+      "hint": "안내된 값을 입력하세요: -45",
+      "perform": [
+        {
+          "type": "-45",
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 0
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 3
+            }
+          ]
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".ManiPointCommandForm input:not([name])",
+          "nth": 0
+        },
+        "equals": "-45"
+      }
+    },
+    {
+      "id": "save-point-4",
+      "title": "4번째 포인트 저장",
+      "text": "저장을 눌러 포인트를 적용하세요.",
+      "docText": "저장을 누르면 포인트가 적용되고 설정 화면이 닫힙니다. 트리에 포인트가 하나 더 표시됩니다.",
+      "target": {
+        "css": ".ManiPointCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".ManiPointCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "포인트",
+              "nth": 3
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".ManiPointCommandForm input:not([name])",
+            "nth": 0
+          },
+          "value": "-45.000",
+          "replaceIf": "0.000"
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "title": "완성된 동작 JB",
+      "text": "동작 JB 아래에 포인트가 네 개 있습니다.\n\n• 프로그램을 실행하면 로봇이 이 포인트들을 하나의 동작으로 묶어 순서대로 지나갑니다.\n\n다음을 누르세요.",
+      "docText": "동작 JB 아래에 포인트가 네 개 있습니다. 프로그램을 실행하면 로봇이 이 포인트들을 하나의 동작(조인트 공간)으로 묶어 순서대로 지나갑니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "동작 JB"
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "동작 JB에 포인트를 더해 네 개로 늘리고 목표 값을 정했습니다."
+    }
+  ]
+}

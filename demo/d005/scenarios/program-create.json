@@ -1,0 +1,198 @@
+{
+  "id": "program-create",
+  "doc": "/manual/program-create",
+  "title": "새 프로그램 만들기",
+  "route": "/muscat/app/dashboard",
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "새 로봇 프로그램을 만들어 봅니다. 이 화면의 로봇은 실제로 움직이지 않으며, 단계 안내에 따라 강조된 곳을 직접 눌러 보세요."
+    },
+    {
+      "id": "open-program",
+      "title": "프로그램 메뉴 열기",
+      "text": "왼쪽 메뉴에서 프로그램을 눌러 프로그램 화면으로 이동합니다.",
+      "target": {
+        "css": "a[href=\"/muscat/app/program\"]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "new-program",
+      "title": "새 프로그램 누르기",
+      "text": "불러온 프로그램이 없으면 화면 가운데에 안내가 나옵니다. 새 프로그램을 눌러 생성 창을 엽니다.",
+      "target": {
+        "css": "button[data-slot=label-button]",
+        "text": "새 프로그램",
+        "nth": 1,
+        "orLast": true
+      },
+      "shot": {
+        "x": 400,
+        "y": 300,
+        "w": 800,
+        "h": 400
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "name",
+      "title": "프로그램 이름 입력",
+      "text": "프로그램 이름을 입력합니다. 영문 대소문자, 숫자, 밑줄(_), 하이픈(-)만 쓸 수 있고, 올바른 이름을 입력하면 다음을 누를 수 있습니다. (예: demo_program)",
+      "docText": "프로그램 이름을 입력합니다. 영문 대소문자, 숫자, 밑줄(_), 하이픈(-)만 쓸 수 있습니다.",
+      "target": {
+        "css": "[role=dialog] [data-slot=text-field]",
+        "text": "프로그램 이름"
+      },
+      "perform": [
+        {
+          "type": "demo_program",
+          "target": {
+            "css": "[role=dialog] input",
+            "nth": 0
+          }
+        }
+      ],
+      "shot": "full",
+      "hint": "올바른 이름을 입력하면 다음을 누를 수 있습니다",
+      "ensure": {
+        "when": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "press": [
+          {
+            "css": "button[data-slot=label-button]",
+            "text": "새 프로그램"
+          }
+        ]
+      },
+      "requireEnabled": {
+        "css": "[role=dialog] [data-slot=dialog-footer] button",
+        "text": "생성"
+      }
+    },
+    {
+      "id": "repeat",
+      "title": "반복 횟수 정하기",
+      "text": "프로그램을 몇 번 실행할지 정합니다. 직접 입력은 횟수를 숫자로 적고, 무한 반복은 멈출 때까지 계속 실행합니다. 이번에는 기본값 1을 그대로 두고 다음을 누르세요.",
+      "docText": "프로그램을 몇 번 실행할지 정합니다. 직접 입력은 횟수를 숫자로 적고, 무한 반복은 멈출 때까지 계속 실행합니다.",
+      "target": {
+        "css": "[role=dialog] [data-slot=text-field]",
+        "text": "반복 횟수"
+      },
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "press": [
+          {
+            "css": "button[data-slot=label-button]",
+            "text": "새 프로그램"
+          }
+        ]
+      },
+      "fill": {
+        "target": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "value": "demo_program"
+      }
+    },
+    {
+      "id": "type",
+      "title": "프로그램 타입 고르기",
+      "text": "빈 프로그램은 아무것도 없는 상태로 시작하고, 프로그램 가져오기는 업로드한 다른 프로그램 파일(.zip)로 새 프로그램을 만듭니다. 이번에는 빈 프로그램을 그대로 두고 다음을 누르세요.",
+      "docText": "빈 프로그램은 아무것도 없는 상태로 시작하고, 프로그램 가져오기는 업로드한 다른 프로그램 파일(.zip)로 새 프로그램을 만듭니다.",
+      "target": {
+        "css": "[role=dialog] [data-slot=text-field]",
+        "text": "프로그램 타입"
+      },
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "press": [
+          {
+            "css": "button[data-slot=label-button]",
+            "text": "새 프로그램"
+          }
+        ]
+      },
+      "fill": {
+        "target": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "value": "demo_program"
+      }
+    },
+    {
+      "id": "create",
+      "title": "생성하기",
+      "text": "생성을 누르면 프로그램이 만들어지고 바로 열립니다.",
+      "target": {
+        "css": "[role=dialog] [data-slot=dialog-footer] button",
+        "text": "생성"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "press": [
+          {
+            "css": "button[data-slot=label-button]",
+            "text": "새 프로그램"
+          }
+        ]
+      },
+      "fill": {
+        "target": {
+          "css": "[role=dialog] input",
+          "nth": 0
+        },
+        "value": "demo_program"
+      }
+    },
+    {
+      "id": "result",
+      "title": "만들어진 프로그램 확인",
+      "text": "프로그램이 만들어져 바로 열렸습니다. 왼쪽에 시작과 종료 사이의 빈 영역이 보입니다. 이곳에 명령을 추가해 프로그램을 만들게 됩니다.",
+      "target": {
+        "css": "span",
+        "text": "빈 영역",
+        "up": 5
+      },
+      "shot": "full"
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "새 프로그램을 만들었습니다. 처음부터 다시 해 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "latest": {
+    "id": "latest",
+    "label": "latest (0.10.x)"
+  },
+  "versions": [
+    {
+      "id": "v0.10",
+      "label": "0.10.x",
+      "sha": "6aa91339463564f3bfe0e39ab005163feb4b13b9"
+    }
+  ]
+}

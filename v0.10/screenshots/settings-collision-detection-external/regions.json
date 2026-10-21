@@ -1,0 +1,37 @@
+{
+ "out-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "out-toggle": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "out-mode-open": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "out-mode-pick": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "out-slider": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "out-save": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "out-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ }
+}

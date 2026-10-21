@@ -1,0 +1,36 @@
+{
+  "id": "move-menu-record",
+  "doc": "/manual/move-menu/record",
+  "title": "동작 녹화 살펴보기",
+  "route": "/muscat/app/move",
+  "restore": "snapshot",
+  "steps": [
+    {
+      "id": "open",
+      "title": "동작 녹화 열기",
+      "text": "오른쪽 메뉴에서 동작 녹화을(를) 누르세요.",
+      "target": {
+        "css": "[data-testid=menu-item-record]"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "panel",
+      "title": "동작 녹화",
+      "text": "모드, 중요 지점 기록 빈도, 파일 이름을 정하고 녹화 시작·녹화 중지 버튼으로 녹화를 제어합니다.",
+      "target": {
+        "css": ".RecordControl"
+      }
+    },
+    {
+      "id": "done",
+      "title": "실습 완료",
+      "text": "동작 녹화 메뉴의 화면을 살펴봤습니다. 다시 보려면 다시 하기를 누르세요."
+    }
+  ]
+}

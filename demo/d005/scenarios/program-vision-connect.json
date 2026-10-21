@@ -1,0 +1,483 @@
+{
+  "id": "program-vision-connect",
+  "doc": "/manual/program/vision",
+  "title": "비전 연결 만들기",
+  "route": "/muscat/app/program",
+  "initialState": {
+    "programs": [
+      {
+        "name": "demo_program",
+        "steps": [
+          {
+            "method": "Empty",
+            "name": "program.button.empty"
+          }
+        ]
+      }
+    ],
+    "loadedProgram": "demo_program"
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "title": "실습을 시작합니다",
+      "text": "프로그램에 비전 명령을 넣어 3D 비전 카메라와 연결하는 설정을 만들어 봅니다.\n\n• 이 실습에는 실제 카메라가 없으며, 프로그램을 실행하지 않고 설정만 해 봅니다."
+    },
+    {
+      "id": "pick-empty",
+      "title": "넣을 위치 고르기",
+      "text": "트리의 빈 영역을 눌러 명령을 넣을 위치를 선택하세요.",
+      "docText": "프로그램 트리에서 명령을 넣을 위치의 빈 영역을 누릅니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "빈 영역"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "open-add",
+      "title": "명령어 목록 열기",
+      "text": "편집 아이콘을 눌러 명령어 목록을 엽니다.",
+      "docText": "트리 위쪽의 편집 아이콘을 누르면 오른쪽에 명령어 목록이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ]
+    },
+    {
+      "id": "pick-cmd",
+      "title": "비전 고르기",
+      "text": "매니퓰레이트 명령어에서 비전을 누르세요.",
+      "docText": "매니퓰레이트 명령어에서 비전을 누릅니다. 트리에 비전 명령이 추가됩니다.",
+      "target": {
+        "css": ".CommandListPanel button[data-slot=button]",
+        "text": "비전"
+      },
+      "also": [
+        {
+          "css": ".CommandListPanel"
+        }
+      ],
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": {
+        "when": {
+          "css": ".CommandListPanel"
+        },
+        "press": [
+          {
+            "css": ".ProgramTreeItem .command-text",
+            "text": "빈 영역"
+          },
+          {
+            "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+            "nth": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "tree-result",
+      "title": "트리에 추가된 비전",
+      "text": "트리에 비전 명령이 추가되었습니다. 다음을 누르세요.",
+      "docText": "트리에 비전 명령이 추가됩니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "비전",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "open-form",
+      "title": "비전 열기",
+      "text": "트리에서 비전을 눌러 설정 화면을 엽니다.",
+      "docText": "트리에서 비전을 누르면 오른쪽에 설정 화면이 열립니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "비전",
+        "nth": 0
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".CommandListPanel"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "form-intro",
+      "title": "비전 설정 화면",
+      "text": "옵션에서 연결할 비전 시스템을 고릅니다.\n\n• MechMind 3D, Photoneo, PICKIT 3D 중 하나입니다.\n• 이 실습에서는 처음 골라져 있는 MechMind 3D를 사용합니다.\n\n다음을 누르세요.",
+      "docText": "옵션에서 연결할 비전 시스템을 고릅니다. MechMind 3D, Photoneo, PICKIT 3D 중 하나이며, 고른 시스템에 맞는 설정 항목이 아래에 나타납니다. 처음에는 MechMind 3D가 골라져 있습니다.",
+      "target": {
+        "css": ".VisionCommandForm .CommandMiddleSectionTemplate",
+        "nth": 0
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mech-intro",
+      "title": "MechMind 3D 인터페이스",
+      "text": "MechMind 3D 인터페이스 영역입니다.\n\n• 목표 서버 IP 주소와 포트 번호는 카메라(비전 서버)의 주소입니다.\n• 함수 목록에서 하는 일을 고르며, 처음에는 연결 생성입니다.\n• 연결 생성에서만 IP·타임 아웃·설치 위치를 정할 수 있습니다.\n\n다음을 누르세요.",
+      "docText": "MechMind 3D 인터페이스 영역에서는 카메라(비전 서버)의 목표 서버 IP 주소와 포트 번호, 함수 목록(코드), 타임 아웃(초), 설치 위치를 정합니다. 처음 함수는 연결 생성이며, IP·타임 아웃·설치 위치는 연결 생성에서만 정할 수 있습니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindInterface .CommandMiddleSectionTemplate",
+        "nth": 0
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-ip",
+      "title": "IP 주소 입력",
+      "text": "목표 서버 IP 주소의 네 칸에 192, 168, 0, 10 을 차례로 입력하세요.\n\n• 마지막 칸의 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "목표 서버 IP 주소의 네 칸에 주소를 나누어 입력합니다. 예에서는 192, 168, 0, 10 을 입력합니다. 포트 번호는 MechMind 3D에서 50000으로 정해져 있습니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindInterface [data-slot=text-field]",
+        "nth": 0
+      },
+      "hint": "안내된 값을 입력하세요: 192.168.0.10",
+      "perform": [
+        {
+          "type": "192",
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.0\"]"
+          }
+        },
+        {
+          "type": "168",
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.1\"]"
+          }
+        },
+        {
+          "type": "0",
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.2\"]"
+          }
+        },
+        {
+          "type": "10",
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.3\"]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".VisionCommandForm input[name=\"server_ip.3\"]"
+        },
+        "equals": "10"
+      }
+    },
+    {
+      "id": "type-timeout",
+      "title": "타임 아웃 입력",
+      "text": "타임 아웃(초)에 10 을 입력하세요.\n\n• 카메라의 응답을 기다리는 시간입니다.\n• 값이 같아야 다음을 누를 수 있습니다. 건너뛰면 자동으로 입력됩니다.",
+      "docText": "타임 아웃(초)에 카메라의 응답을 기다릴 시간을 입력합니다. 예에서는 10 을 입력합니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindInterface [data-slot=text-input]:has(input[name=timeout_sec])"
+      },
+      "hint": "안내된 값을 입력하세요: 10",
+      "perform": [
+        {
+          "type": "10",
+          "target": {
+            "css": ".VisionCommandForm input[name=timeout_sec]"
+          }
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.0\"]"
+          },
+          "value": "192"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.1\"]"
+          },
+          "value": "168"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.2\"]"
+          },
+          "value": "0"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.3\"]"
+          },
+          "value": "10"
+        }
+      ],
+      "requireValue": {
+        "target": {
+          "css": ".VisionCommandForm input[name=timeout_sec]"
+        },
+        "equals": "10"
+      }
+    },
+    {
+      "id": "connect-values",
+      "title": "정한 값 확인",
+      "text": "카메라 주소를 192.168.0.10, 타임 아웃을 10초로 정했습니다.\n\n• 포트 번호는 MechMind 3D에서 50000으로 정해져 있습니다.\n• 저장하기 전에는 적용되지 않습니다.\n\n다음을 누르세요.",
+      "docText": "카메라 주소를 192.168.0.10, 타임 아웃을 10초로 정합니다. 포트 번호는 MechMind 3D에서 50000으로 정해져 있습니다. 저장하기 전에는 적용되지 않습니다.",
+      "target": {
+        "css": ".VisionCommandForm .MechMindInterface .CommandMiddleSectionTemplate",
+        "nth": 0
+      },
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.0\"]"
+          },
+          "value": "192"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.1\"]"
+          },
+          "value": "168"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.2\"]"
+          },
+          "value": "0"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.3\"]"
+          },
+          "value": "10"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=timeout_sec]"
+          },
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "save-connect",
+      "title": "연결 생성 저장",
+      "text": "저장을 눌러 적용하세요.",
+      "docText": "저장을 누르면 설정이 적용됩니다. 트리의 비전 옆에 [Create Connection]과 주소가 표시됩니다. 실패 처리 방식은 처음 값(무시 후 진행)을 그대로 씁니다.",
+      "target": {
+        "css": ".VisionCommandForm [data-slot=label-button]",
+        "text": "저장"
+      },
+      "advance": "click",
+      "perform": [
+        {
+          "click": true
+        }
+      ],
+      "shot": "full",
+      "ensure": [
+        {
+          "when": {
+            "css": ".VisionCommandForm"
+          },
+          "press": [
+            {
+              "css": ".ProgramTreeBox .hstack.gap-0\\.5 button",
+              "nth": 0
+            },
+            {
+              "css": ".ProgramTreeItem .command-text",
+              "text": "비전",
+              "nth": 0
+            }
+          ]
+        }
+      ],
+      "fill": [
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.0\"]"
+          },
+          "value": "192"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.1\"]"
+          },
+          "value": "168"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.2\"]"
+          },
+          "value": "0"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=\"server_ip.3\"]"
+          },
+          "value": "10"
+        },
+        {
+          "target": {
+            "css": ".VisionCommandForm input[name=timeout_sec]"
+          },
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "connect-result",
+      "title": "저장된 연결 확인",
+      "text": "트리의 비전 옆에 연결 정보가 표시됩니다.\n\n• 프로그램을 실행하면 이 지점에서 카메라에 연결합니다.\n\n다음을 누르세요.",
+      "docText": "트리의 비전 옆에 [Create Connection]과 IP 주소·포트가 표시됩니다. 프로그램을 실행하면 이 지점에서 카메라에 연결합니다.",
+      "target": {
+        "css": ".ProgramTreeItem .command-text",
+        "text": "비전",
+        "nth": 0
+      },
+      "also": [
+        {
+          "css": ".ProgramTreeBox"
+        }
+      ],
+      "shot": "full"
+    },
+    {
+      "id": "done",
+      "title": "완료",
+      "text": "비전 명령으로 카메라 연결 설정을 만들었습니다."
+    }
+  ]
+}

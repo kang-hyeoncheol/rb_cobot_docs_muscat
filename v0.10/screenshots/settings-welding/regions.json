@@ -1,0 +1,97 @@
+{
+ "device-intro": {
+  "w": 1140,
+  "h": 340,
+  "dynamic": []
+ },
+ "device-open": {
+  "w": 1140,
+  "h": 340,
+  "dynamic": []
+ },
+ "device-pick": {
+  "w": 1140,
+  "h": 406,
+  "dynamic": []
+ },
+ "device-result": {
+  "w": 1140,
+  "h": 340,
+  "dynamic": []
+ },
+ "output-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "output-open": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "output-pick": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "output-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "input-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "hardware-intro": {
+  "w": 1140,
+  "h": 340,
+  "dynamic": []
+ },
+ "hardware-open": {
+  "w": 1140,
+  "h": 340,
+  "dynamic": []
+ },
+ "hardware-pick": {
+  "w": 1140,
+  "h": 414,
+  "dynamic": []
+ },
+ "hardware-result": {
+  "w": 1140,
+  "h": 340,
+  "dynamic": []
+ },
+ "map-intro": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "map-add": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "map-values": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "map-result": {
+  "w": 1600,
+  "h": 900,
+  "dynamic": []
+ },
+ "save": {
+  "w": 620,
+  "h": 340,
+  "dynamic": []
+ },
+ "result": {
+  "w": 620,
+  "h": 340,
+  "dynamic": []
+ }
+}
